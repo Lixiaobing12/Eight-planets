@@ -1,79 +1,97 @@
 <template>
   <div class="context">
-    <n-page-header>
-      <template #subtitle>
-        <div class="img-absolute">
-          <div>{{ $t("home.totalRevenue") }}</div>
-          <div>{{ revenue }} STC</div>
-        </div>
-      </template>
-      <template #extra>
-        <div class="img-position">
-          <img src="@/assets/img/home-signin.png" alt="" width="40" />
-          <div>{{ $t("home.signIn") }}</div>
-        </div>
-      </template>
-    </n-page-header>
-
-    <div class="notice">
-      <div class="img-position">
-        <img src="@/assets/img/home-notice.png" width="40" alt="" />
-      </div>
-      {{$t('home.tip1')}}~
+    <img src="@/assets/web/home-banner.png" style="width: 100%" alt="" />
+    <img src="@/assets/web/home-tip1.png" style="width: 80%" alt="" />
+    <div style="margin: -40px 0 20px 20px; width: 80%">
+      {{ $t("home.tip1") }}
+    </div>
+    <img src="@/assets/web/home-tip2.png" style="width: 80%" alt="" />
+    <div style="margin: -40px 0 20px 20px; width: 80%">
+      {{ $t("home.tip2") }}
     </div>
 
-    <div class="bottom-absolute">
-      <div class="connect-wallet" @click="connect">
-        {{ account ? FORMATTER_ADDRS(account) : $t("home.connectWallet") }}
+    <div style="text-align: center; margin-top: 40px">
+      <div style="display: flex; align-items: center; justify-content: center">
+        <img src="@/assets/web/home-transparent-lobo.png" width="40" alt="" />
+        <div style="margin-left: 20px; font-size: 1.5em">SNAIL SWAP</div>
       </div>
-      <div style="width: calc(100% - 40px)">
-        <n-grid x-gap="12" :cols="2" item-responsive>
-          <n-gi>
-            <div class="mining gird-img" @click="toLink('/Mining')">
-              <img src="@/assets/img/home-my-mining.png" alt="" width="40" />
-              <div>
-                <span>{{ $t("home.miningMachine") }}</span>
-                <span>{{ myMachineCount }}</span>
-              </div>
-            </div>
-          </n-gi>
-          <n-gi>
-            <div class="power gird-img" @click="toLink('/MyPower')">
-              <img src="@/assets/img/home-my-power.png" alt="" width="40" />
-              <div>
-                <span>{{ $t("home.computingPower") }}</span>
-                <span>{{ myPower }}</span>
-              </div>
-            </div>
-          </n-gi>
-        </n-grid>
+      <div style="font-size: 2em; marign-top: 2em; font-weight: 700">
+        {{ $t("home.Donate") }}
+      </div>
 
-        <n-grid x-gap="12" :cols="4">
+      <n-input v-model:value="inputAmount" type="text" style="width: 60%" placeholder="">
+        <template #suffix>
+          <span>MAX</span>
+        </template>
+      </n-input>
+      <div style="width: 80%; text-align: center; margin: 20px auto">
+        <n-grid x-gap="12" :cols="2">
           <n-gi>
-            <div class="span-position" @click="toLink('/BuyMachine')">
-              <img src="@/assets/img/home-machine.png" alt="" width="70" />
-              <span>{{ $t("home.buy") }}</span>
-            </div>
+            <div class="but">支付</div>
           </n-gi>
           <n-gi>
-            <div class="span-position" @click="toLink('/StarTeam')">
-              <img src="@/assets/img/home-startTeam.png" alt="" width="70" />
-              <span>{{ $t("home.starTeam") }}</span>
-            </div>
-          </n-gi>
-          <n-gi>
-            <div class="span-position">
-              <img src="@/assets/img/home-space.png" alt="" width="70" />
-              <span>{{ $t("home.space") }}</span>
-            </div>
-          </n-gi>
-          <n-gi>
-            <div class="span-position">
-              <img src="@/assets/img/home-leaderboard.png" alt="" width="70" />
-              <span>{{ $t("home.leaderboard") }}</span>
-            </div>
+            <div class="but">领取</div>
           </n-gi>
         </n-grid>
+      </div>
+
+      <div>
+        <div class="data-img ethimg">
+          <span>{{$t("home.amount")}}：</span>
+          <span>0.05 - 5 ETH</span>
+        </div>
+        <div class="data-img">
+          <span>{{$t('home.Quantity')}}：</span>
+          <span>10000000枚</span>
+        </div>
+      </div>
+      <div>
+        <div style="text-align: left; margin: 80px 0 0">
+          <img src="@/assets/web/home-coming.png" alt="" style="width: 180px" />
+        </div>
+        <div style="position: relative; display: flex; align-items: center">
+          <img src="@/assets/web/home-ifo.png" alt="" style="width: 100%" />
+          <span
+            style="position: absolute; left: 10px; right: 10px; bottom: 20px"
+            :style="{ bottom: locale === 'en' ? '5px' : '20px' }"
+            >{{ $t("home.tip3") }}</span
+          >
+        </div>
+        <div style="position: relative; display: flex; align-items: center">
+          <img src="@/assets/web/home-nft.png" alt="" style="width: 100%" />
+          <span
+            style="position: absolute; left: 10px; right: 10px; bottom: 20px"
+            :style="{ bottom: locale === 'en' ? '5px' : '20px' }"
+            >{{ $t("home.tip4") }}</span
+          >
+        </div>
+        <div style="position: relative; display: flex; align-items: center">
+          <img src="@/assets/web/home-game.png" alt="" style="width: 100%" />
+          <span
+            style="position: absolute; left: 10px; right: 10px; bottom: 20px"
+            :style="{ bottom: locale === 'en' ? '5px' : '20px' }"
+            >{{ $t("home.tip5") }}</span
+          >
+        </div>
+      </div>
+
+      <div>
+        <img
+          src="@/assets/web/home-footer.png"
+          alt=""
+          style="width: 100%; margin: 50px 0"
+        />
+        <div
+          style="
+            display: flex;
+            justify-content: space-around;
+            margin-bottom:50px;
+          "
+        >
+          <img src="@/assets/web/discord.png" alt="" width="30" />
+          <img src="@/assets/web/twitter.png" alt="" width="30" />
+          <img src="@/assets/web/telegram.png" alt="" width="30" />
+        </div>
       </div>
     </div>
   </div>
@@ -93,6 +111,7 @@ const router = useRouter();
 const store = useStore();
 const message = useMessage();
 const route = useRoute();
+const inputAmount = ref('');
 const account = computed(() => {
   return store.state.web3.defaultAccount;
 });
@@ -136,102 +155,54 @@ const toLink = (path) => {
 </script>
 <style lang="less" scoped>
 .context {
-  background-image: url("@/assets/img/home-bj.png");
-  background-size: 100% 100%;
   height: 100%;
   padding: 20px;
-  text-align: center;
+  text-align: left;
   position: relative;
-  .img-absolute {
-    background-image: url("@/assets/img/home-reward.png");
+  overflow: auto;
+
+  .n-input {
+    background: transparent;
+
+    ::v-deep(.n-input__border) {
+      border: 2px solid #4381dc !important;
+      border-radius: 10px;
+    }
+
+    ::v-deep(.n-input__suffix) {
+      color: #fff;
+      font-weight: 700;
+    }
+  }
+
+  .but {
+    background-image: url("@/assets/web/home-but.png");
     background-size: 100% 100%;
-    padding: 10px 30px;
-    color: #00f1ff;
-    text-align: left;
-    padding-left: 50px;
-    margin-bottom: -20px;
-    min-width: 150px;
-  }
-  .img-position {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    div {
-      position: absolute;
-      bottom: -2px;
-      color: #00f1ff;
-      background: rgba(23, 50, 144, 0.5);
-      border: 1px solid #11f4ff;
-      left: -9px;
-      right: -9px;
-      text-align: center;
-      padding: 1px 5px;
-    }
-  }
-  .notice {
-    color: #00f1ff;
-    background-color: rgba(23, 50, 144, 0.5);
-    border: 1px solid #11f4ff;
-    padding: 5px 40px;
-    display: inline-flex;
-    margin: 50px auto;
-    position: relative;
-
-    .img-position {
-      position: absolute;
-      top: -10px;
-      left: -20px;
-    }
+    color: #fff;
+    font-weight: 700;
+    padding: 7px 16px;
   }
 
-  .bottom-absolute {
-    position: absolute;
-    bottom: 20px;
+  .data-img {
+    background-image: url("@/assets/web/home-n.png");
+    background-size: 100% 100%;
+    color: #fff;
     display: flex;
-    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    left: 0;
-    right: 0;
-    padding-bottom: 30px;
-    .connect-wallet {
-      background-image: url("@/assets/img/home-connect.png");
-      background-size: 100% 100%;
-      text-align: center;
-      padding: 10px 30px;
-      color: #b6f0ff;
-      margin-bottom: 15px;
-    }
+    width: 80%;
+    margin: 20px auto;
+    height: 50px;
+    padding: 0 16px;
+    font-size: 1.2em;
 
-    .gird-img {
-      background-size: 100% 100%;
-      text-align: center;
-      padding: 15px 10px 25px;
-      color: #b6f0ff;
-      display: flex;
-
-      div {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-      }
+    & span:nth-of-type(2) {
+      font-size: 0.8em;
+      margin-left: 2em;
     }
-    .mining {
-      background-image: url("@/assets/img/home-mining.png");
-    }
-    .power {
-      background-image: url("@/assets/img/home-power.png");
-    }
-
-    .span-position {
-      position: relative;
-      display: flex;
-      justify-content: center;
-
-      span {
-        position: absolute;
-        bottom: 0;
-      }
-    }
+  }
+  .ethimg {
+    background-image: url("@/assets/web/home-eth.png");
   }
 }
 </style>
