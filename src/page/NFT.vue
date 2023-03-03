@@ -1,13 +1,13 @@
 <template>
   <div class="context">
     <div class="but-group">
-      <div :class="{ isActive: active === 0 }" @click="active = 0">盲盒</div>
-      <div :class="{ isActive: active === 1 }" @click="active = 1">图鉴</div>
+      <div :class="{ isActive: active === 0 }" @click="active = 0">{{$t('home.BlindBox')}}</div>
+      <div :class="{ isActive: active === 1 }" @click="active = 1">{{$t('home.Illustrated Manual')}}</div>
     </div>
 
     <div>
-        <BlindBox v-if="active === 0 "/>
-        <Illustrated v-else/>
+        <BlindBox v-show="active === 0 "/>
+        <Illustrated v-show="active === 1"/>
     </div>
 
   </div>

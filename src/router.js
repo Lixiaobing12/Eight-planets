@@ -17,7 +17,9 @@ import Swap from '@/page/Swap.vue';
 import NFT from '@/page/NFT.vue';
 import BlindBox from '@/page/BlindBox.vue';
 import Illustrated from '@/page/Illustrated.vue';
-import Planet from '@/page/Planet.vue';
+import Invite from '@/page/Invite.vue';
+import Venus from '@/page/Venus.vue';
+
 
 export const routes = [{
         path: '/',
@@ -39,9 +41,14 @@ export const routes = [{
         name: 'Pool',
     },
     {
-        path: '/Planet',
-        component: Planet,
-        name: 'Planet',
+        path: '/Invite',
+        component: Invite,
+        name: 'Invite'
+    },
+    {
+        path: '/Venus',
+        component: Venus,
+        name: 'Venus'
     },
     {
         path: '/NFT',

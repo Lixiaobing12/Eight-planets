@@ -29,11 +29,11 @@ export default defineComponent({
     const path = computed(() => route.path);
     const { t, locale } = useI18n();
 
-    onBeforeMount(() => {
-      const lang = localStorage.getItem("lang");
-      i18n.global.locale.value = lang;
-      locale.value = lang;
-    });
+    // onBeforeMount(() => {
+    //   const lang = localStorage.getItem("lang");
+    //   i18n.global.locale.value = lang;
+    //   locale.value = lang;
+    // });
     return {
       path,
     };

@@ -31,25 +31,25 @@
           background: #59c2cb;
           color: #fff;
         "
-        >购买</n-button
+        >{{$t('buyMachine.buy')}}</n-button
       >
 
       <div class="nft-card">
         <p>
           <img src="@/assets/web/color1.png" alt="" />
-          N卡------可以享受1-2个星球代币的分红。
+          {{$t("home.Ncard")}}
         </p>
         <p>
           <img src="@/assets/web/color2.png" alt="" />
-          R卡------可以享受2-3个星球代币的分红。
+          {{$t('home.Rcard')}}
         </p>
         <p>
           <img src="@/assets/web/color3.png" alt="" />
-          SR卡------可以享受3个星球代币的分红
+          {{$t('home.SRcard')}}
         </p>
         <p>
           <img src="@/assets/web/color4.png" alt="" />
-          SSR卡------可以享受8个星球代币的分红, 全网限量。
+          {{$t('home.SSRcard')}}
         </p>
       </div>
     </div>

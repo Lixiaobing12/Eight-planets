@@ -19,30 +19,38 @@
         {{ $t("home.Donate") }}
       </div>
 
-      <n-input v-model:value="inputAmount" type="text" style="width: 60%" placeholder="">
+      <n-input
+        v-model:value="inputAmount"
+        type="text"
+        style="width: 60%; color: #fff"
+        placeholder=""
+      >
         <template #suffix>
-          <span>MAX</span>
+          <span @click="max">MAX</span>
         </template>
       </n-input>
       <div style="width: 80%; text-align: center; margin: 20px auto">
         <n-grid x-gap="12" :cols="2">
           <n-gi>
-            <div class="but">支付</div>
+            <div class="but" @click="buy">
+              <n-spin :size="16" v-if="locading" stroke="#fff"/>
+              <span v-else>{{ $t("home.pay") }}</span>
+            </div>
           </n-gi>
           <n-gi>
-            <div class="but">领取</div>
+            <div class="but withdraw">{{ $t("home.withward") }}</div>
           </n-gi>
         </n-grid>
       </div>
 
       <div>
         <div class="data-img ethimg">
-          <span>{{$t("home.amount")}}：</span>
+          <span>{{ $t("home.amount") }}：</span>
           <span>0.05 - 5 ETH</span>
         </div>
         <div class="data-img">
-          <span>{{$t('home.Quantity')}}：</span>
-          <span>10000000枚</span>
+          <span>{{ $t("home.Quantity") }}：</span>
+          <span>10,000,000</span>
         </div>
       </div>
       <div>
@@ -85,7 +93,7 @@
           style="
             display: flex;
             justify-content: space-around;
-            margin-bottom:50px;
+            margin-bottom: 50px;
           "
         >
           <img src="@/assets/web/discord.png" alt="" width="30" />
@@ -102,19 +110,25 @@ import { useI18n } from "vue-i18n";
 import { useRouter, useRoute } from "vue-router";
 import { useFetch } from "@/utils/request.js";
 import { useStore } from "vuex";
-import { computed, onActivated, watch } from "vue";
+import { computed, onActivated, ref, watch } from "vue";
 import { FORMATTER_ADDRS } from "@/utils/methods.js";
 import { useMessage } from "naive-ui";
+import BigNumber from "bignumber.js";
+import loading from "naive-ui/es/_internal/loading";
 
 const { t, locale } = useI18n();
 const router = useRouter();
 const store = useStore();
 const message = useMessage();
 const route = useRoute();
-const inputAmount = ref('');
+const inputAmount = ref("");
 const account = computed(() => {
   return store.state.web3.defaultAccount;
 });
+const locading = ref(false);
+
+let amount = ref("0");
+const isActive = ref(false);
 // 连接钱包
 const connect = async () => {
   if (!account.value) {
@@ -122,31 +136,40 @@ const connect = async () => {
     message.info(t("home.connectSuccess"));
   }
 };
-const revenue = computed(() => {
-  let num = (
-    Number(store.state.res.userGet.total_reward) +
-    Number(store.state.res.userReward.total_reward)
-  ).toFixed(4);
-  return isNaN(num) ? "0.0000" : num;
-});
-const myPower = computed(() => {
-  let num = Number(store.state.res.userGet.self_hash).toFixed(1);
-  return isNaN(num) ? "0.0" : num;
-});
-const myMachineCount = computed(() => store.state.res.depositList.length);
+// 最大
+const max = () => {
+  inputAmount.value = BigNumber(5e18).minus(amount.value).div(1e18).toFixed(2);
+};
+const buy = async () => {
+  if (!account.value || locading.value) return;
+  let max = BigNumber(5e18).minus(amount.value);
+  let input = BigNumber(inputAmount.value || 0).times(1e18);
+  if (input.isGreaterThan(max)) {
+    inputAmount.value = max.div(1e18).toFixed(2);
+  }
+  if (input.isLessThan(0.05e18)) {
+    inputAmount.value = "0.05";
+  }
+  try {
+    locading.value = true;
+    await store.dispatch("web3/buy", BigNumber(inputAmount.value).times(1e18));
+    locading.value = false;
+    message.success(t("buyMachine.buySuccess"));
+  } catch (err) {
+    locading.value = false;
+  }
+};
+let interval = null;
 const fetch = () => {
-  useFetch("/user/get")
-    .then((res) => {
-      if (!res.data.parent_addr && !res.data.child.length) {
-        let parent = route.query.ref;
-        if (parent && parent !== account.value) {
-          useFetch("/bind/parent", {
-            parent_addr: parent,
-          });
-        }
-      }
-    })
-    .catch((err) => {});
+  if (interval) clearInterval(interval);
+  interval = setInterval(() => {
+    store.dispatch("web3/isActive").then((res) => {
+      isActive.value = res;
+    });
+    store.dispatch("web3/balanceOf").then((res) => {
+      amount.value = BigNumber(res);
+    });
+  }, 1500);
 };
 watch(account, fetch);
 const toLink = (path) => {
@@ -163,7 +186,9 @@ const toLink = (path) => {
 
   .n-input {
     background: transparent;
-
+    ::v-deep(.n-input__input-el) {
+      color: #fff;
+    }
     ::v-deep(.n-input__border) {
       border: 2px solid #4381dc !important;
       border-radius: 10px;
@@ -181,6 +206,9 @@ const toLink = (path) => {
     color: #fff;
     font-weight: 700;
     padding: 7px 16px;
+  }
+  .withdraw {
+    filter: opacity(0.5);
   }
 
   .data-img {

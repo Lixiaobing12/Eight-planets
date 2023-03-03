@@ -4,7 +4,7 @@ import messages from './getMessage'
 //注册i8n实例并引入语言文件
 const localeData = {
     legacy: false, // composition API
-    locale: 'zh',
+    locale: 'en',
     globalInjection: true,
     messages,
 }

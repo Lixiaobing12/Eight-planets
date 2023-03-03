@@ -1,6 +1,6 @@
 import { Web3Provider } from '@/utils/web3'
 import BigNumber from 'bignumber.js';
-import { STC, MINER } from '@/utils/Coins'
+import { STC, MINER, snailIdo } from '@/utils/Coins'
 import i18n from '@/utils/i18n/setUpI18n.js';
 
 
@@ -21,20 +21,25 @@ const actions = {
         // window.$message.success(i18n.global.t('home.approveSuccess'))
         return context.state.defaultAccount;
     },
-    async buy(context, type) {
+    async isActive(context) {
+        const web3 = context.state.web3;
+        const { isActive } = new web3.eth.Contract(snailIdo.abi, snailIdo.address).methods;
+        return isActive().call();
+    },
+    async balanceOf(context) {
+        const web3 = context.state.web3;
+        const { balanceOf } = new web3.eth.Contract(snailIdo.abi, snailIdo.address).methods;
+        return balanceOf(context.state.defaultAccount).call();
+    },
+    async buy(context, amount) {
         const defaultAccount = context.state.defaultAccount;
         const web3 = context.state.web3;
         if (defaultAccount) {
-            const { deposit, owner } = new web3.eth.Contract(MINER.abi, MINER.address).methods;
-            const { approve, allowance } = new web3.eth.Contract(STC.abi, STC.address).methods;
-            const value = await allowance(defaultAccount, MINER.address).call();
-            if (!Number(value)) {
-                await approve(MINER.address, max).send({ from: defaultAccount })
-                window.$message.success(i18n.global.t('home.approveSuccess'))
-            }
-            return deposit(BigNumber(type).times(1e18).toFixed(0)).send({ from: defaultAccount })
+            const { purchase } = new web3.eth.Contract(snailIdo.abi, snailIdo.address).methods;
+
+            return purchase(amount.toFixed(0)).send({ from: defaultAccount, value: amount.toFixed(0) })
         } else {
-            console.log(i18n.global)
+
             window.$message.warning(i18n.global.t('home.placeConnect'))
             return Promise.reject()
         }
