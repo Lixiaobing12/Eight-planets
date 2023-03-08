@@ -39,19 +39,38 @@
     v-model:show="active"
     width="50%"
     placement="right"
-    style="top: 50px; background: #0b2438; color: #fff"
+    style="top: 50px; background: #0b2438; color: #fff; max-width: 240px"
   >
     <n-drawer-content>
-      <div v-for="i in 10" :key="i" class="imgs" @click="toLink(i)">
-        <img :src="getURL(i)" alt="" />
-        <div class="absolute">{{ $t(getName(i)) }}</div>
-      </div>
+      <n-menu
+        :collapsed-width="64"
+        :collapsed-icon-size="22"
+        :options="menuOptions"
+        :root-indent="36"
+        :indent="2"
+        :on-update:value="onMenuClick"
+      />
       <div
         style="display: flex; justify-content: space-around; margin-top: -30px"
       >
-        <img src="@/assets/web/discord.png" alt="" width="30" />
-        <img src="@/assets/web/twitter.png" alt="" width="30" />
-        <img src="@/assets/web/telegram.png" alt="" width="30" />
+        <img
+          src="@/assets/web/telegram.png"
+          alt=""
+          width="30"
+          @click="toURL('https://t.me/Snail_SuperFarm')"
+        />
+        <img
+          src="@/assets/web/twitter.png"
+          alt=""
+          width="30"
+          @click="toURL('https://twitter.com/Snail_SuperFarm')"
+        />
+        <img
+          src="@/assets/web/discord.png"
+          alt=""
+          width="30"
+          @click="toURL('https://discord.gg/zfNTE5mBYw')"
+        />
       </div>
     </n-drawer-content>
   </n-drawer>
@@ -59,14 +78,19 @@
 <script setup>
 import { useRouter, useRoute } from "vue-router";
 import { ArrowNarrowRight } from "@vicons/tabler";
-import { computed } from "vue";
-import { useMessage } from "naive-ui";
+import { computed, h, render } from "vue";
+import { useMessage, NIcon } from "naive-ui";
 import { useStore } from "vuex";
 import { FORMATTER_ADDRS } from "@/utils/methods.js";
 import { useI18n } from "vue-i18n";
-import {routes} from "@/router.js";
+import { routes } from "@/router.js";
 
-console.log(routes)
+function renderIcon(icon) {
+  return () =>
+    h(NIcon, null, {
+      default: () => h("img", { src: icon, style: "width:100%" }),
+    });
+}
 const message = useMessage();
 const { t, locale } = useI18n();
 const route = useRoute();
@@ -83,6 +107,31 @@ const connect = async () => {
     message.info(t("home.connectSuccess"));
   }
 };
+const menuOptions = computed(() => {
+  return routes
+    .filter((i) => i.meta.isVisiable)
+    .map((item) => {
+      return {
+        label: t(item.meta.name),
+        key: item.name,
+        path: item.path,
+        chickEvent: item.meta.chickEvent || "nomal",
+        icon: renderIcon(item.meta.icon),
+        meta: item.meta,
+        children: item.children
+          ? item.children
+              .filter((i) => i.meta.isVisiable)
+              .map((i) => ({
+                label: t(i.meta.name),
+                key: i.name,
+                meta: i.meta,
+                path: i.path,
+                chickEvent: item.meta.chickEvent || "nomal",
+              }))
+          : "",
+      };
+    });
+});
 // 切换语言
 const changeLang = () => {
   locale.value = locale.value === "zh" ? "en" : "zh";
@@ -92,80 +141,56 @@ const getURL = (i) => {
   return new URL(`../assets/web/link-${i}.png`, import.meta.url).href;
 };
 // 跳转
-const toLink = (i) => {
-  if ([3, 5, 6, 7, 8].includes(i)) {
-    message.info(t("home.Coming soon"));
+const onMenuClick = (key, item) => {
+  console.log(key, item);
+  if (item.meta && item.chickEvent === "notice") {
+    return message.info(t("home.Coming soon"));
+  } else if (item.meta && item.chickEvent === "open") {
+    window.open(item.meta.url);
     return;
   }
-  console.log("i", i);
-  let path = "/Swap";
-  switch (i) {
-    case 2:
-      path = "/Pool";
-      break;
-    case 3:
-      path = "/blackhole";
-      break;
-    case 4:
-      path = "/NFT";
-      break;
-    case 5:
-      path = "/Market";
-      break;
-    case 6:
-      path = "/UCity";
-      break;
-    case 7:
-      path = "/Ifo";
-      break;
-    case 8:
-      path = "/StarLeague";
-      break;
-    case 9:
-      path = "/whilePaper";
-      break;
-    case 10:
-      path = "/Invite";
-      break;
-  }
-  router.push({ path });
+  router.push({ path: item.path });
+
+  // if ([3, 5, 6, 7, 8].includes(i)) {
+  //   message.info(t("home.Coming soon"));
+  //   return;
+  // }
+  // console.log("i", i);
+  // let path = "/Swap";
+  // switch (i) {
+  //   case 2:
+  //     path = "/Pool";
+  //     break;
+  //   case 3:
+  //     path = "/blackhole";
+  //     break;
+  //   case 4:
+  //     path = "/NFT";
+  //     break;
+  //   case 5:
+  //     path = "/Market";
+  //     break;
+  //   case 6:
+  //     path = "/UCity";
+  //     break;
+  //   case 7:
+  //     path = "/Ifo";
+  //     break;
+  //   case 8:
+  //     path = "/StarLeague";
+  //     break;
+  //   case 9:
+  //     path = "/whilePaper";
+  //     break;
+  //   case 10:
+  //     path = "/Invite";
+  //     break;
+  // }
+  // router.push({ path });
 };
-// 获取名称
-const getName = (i) => {
-  let name = "";
-  switch (i) {
-    case 1:
-      name = "home.SnailSwap";
-      break;
-    case 2:
-      name = "home.PlanetPool";
-      break;
-    case 3:
-      name = "home.blackhole";
-      break;
-    case 4:
-      name = "home.nft";
-      break;
-    case 5:
-      name = "home.Market";
-      break;
-    case 6:
-      name = "home.UndergroundCity";
-      break;
-    case 7:
-      name = "home.ifo";
-      break;
-    case 8:
-      name = "home.StarLeague";
-      break;
-    case 9:
-      name = "home.whilePaper";
-      break;
-    case 10:
-      name = "home.Invite";
-      break;
-  }
-  return name;
+// 跳转外链
+ const toURL = (i) => {
+  window.open(i);
 };
 // 返回首页
 const toHome = () => {
@@ -248,6 +273,46 @@ window.$message = useMessage();
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+::v-deep(.n-menu) {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 90%;
+  .n-menu-item-content {
+    padding-left: 20px !important;
+  }
+  .n-menu-item {
+    background-image: url("@/assets/web/menu-bg.png");
+    background-size: 100% 100%;
+    height: 35px;
+    .n-menu-item-content-header {
+      color: #fff;
+    }
+  }
+  .n-submenu-children {
+    .n-menu-item {
+      background-image: none;
+    }
+  }
+  .n-menu-item-content:not(.n-menu-item-content--disabled):hover::before {
+    background-color: inherit;
+  }
+  .n-menu-item-content:not(.n-menu-item-content--disabled):hover
+    .n-menu-item-content-header {
+    color: #fff;
+  }
+  .n-menu-item-content:not(.n-menu-item-content--disabled):hover
+    .n-menu-item-content__arrow {
+    color: #fff;
+  }
+  .n-menu-item-content.n-menu-item-content--collapsed
+    .n-menu-item-content__arrow {
+    color: #fff;
+  }
+  .n-menu-item-content.n-menu-item-content--selected::before{
+    background-color: inherit;
+  }
 }
 .imgs {
   width: 100%;

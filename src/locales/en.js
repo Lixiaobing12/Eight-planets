@@ -50,7 +50,7 @@ export default {
         venustip1: 'Venus is the first LP mining pool of SnailS WAP ecology and the creation planet of SnailS WAP ecology. It will be launched by airdrop, and its token is VEN.',
         venustip2: 'When the tvl reaches 500,000 and the mining lasts for 120 hours, the next mining pool will be opened',
         BlindBox: "BlindBox",
-        'Illustrated Manual': "Illustrated Manual",
+        'Illustrated': "Illustrated Manual",
         Ncard: "The N card -------- enjoy a dividend of 1-2 planet tokens.",
         Rcard: "The R card -------- enjoy a dividend of 2-3 planet tokens.",
         SRcard: "The SR card -------- enjoy a dividend of 3 planet tokens.",

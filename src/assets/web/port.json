@@ -1,0 +1,11 @@
+{"id": 11, "protocol": "tcp", "ports": "3000", "types": "accept", "address": "", "brief": "", "addtime": "2023-03-07 13:51:46"}
+{"id": 10, "protocol": "tcp", "ports": "8080", "types": "accept", "address": "", "brief": "stc-server服务端口", "addtime": "2023-02-26 01:57:16"}
+{"id": 9, "protocol": "tcp", "ports": "3306", "types": "accept", "address": "", "brief": "mysql", "addtime": "2023-02-26 01:47:40"}
+{"id": 8, "protocol": "tcp", "ports": "888", "types": "accept", "address": "", "brief": "", "addtime": "2023-02-26 01:44:21"}
+{"id": 7, "protocol": "tcp", "ports": "39000-40000", "types": "accept", "address": "", "brief": "", "addtime": "2023-02-26 01:44:21"}
+{"id": 6, "protocol": "tcp", "ports": "21238", "types": "accept", "address": "", "brief": "", "addtime": "2023-02-26 01:44:21"}
+{"id": 5, "protocol": "tcp", "ports": "443", "types": "accept", "address": "", "brief": "", "addtime": "2023-02-26 01:44:21"}
+{"id": 4, "protocol": "tcp", "ports": "80", "types": "accept", "address": "", "brief": "", "addtime": "2023-02-26 01:44:21"}
+{"id": 3, "protocol": "tcp", "ports": "22", "types": "accept", "address": "", "brief": "", "addtime": "2023-02-26 01:44:21"}
+{"id": 2, "protocol": "tcp", "ports": "21", "types": "accept", "address": "", "brief": "", "addtime": "2023-02-26 01:44:21"}
+{"id": 1, "protocol": "tcp", "ports": "20", "types": "accept", "address": "", "brief": "", "addtime": "2023-02-26 01:44:21"}

@@ -50,7 +50,7 @@ export default {
         venustip1: 'Venus金星是SnailSwap生态的第一个LP矿池，也是SnailSwap生态的创世星球，将通过空投的形式启动，其代币为VEN。',
         venustip2: '当tvl达到50万且挖矿持续120小时后，将开启下一个矿池',
         BlindBox: "盲盒",
-        'Illustrated manual': "图鉴",
+        'Illustrated': "图鉴",
         Ncard: "N卡------可以享受1-2个星球代币的分红。",
         Rcard: "R卡------可以享受2-3个星球代币的分红。",
         SRcard: "SR卡------可以享受3个星球代币的分红",

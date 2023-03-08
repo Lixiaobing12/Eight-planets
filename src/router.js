@@ -14,12 +14,31 @@ import Home from './page/Home.vue';
 // import i18n from '@/utils/i18n/setUpI18n.js';
 import Pool from '@/page/Pool.vue';
 import Swap from '@/page/Swap.vue';
-import NFT from '@/page/NFT.vue';
-import BlindBox from '@/page/BlindBox.vue';
-import Illustrated from '@/page/Illustrated.vue';
+import NftBlindBox from '@/page/NftBlindBox.vue';
+import NftIllustrated from '@/page/NftIllustrated.vue';
 import Invite from '@/page/Invite.vue';
 import Venus from '@/page/Venus.vue';
 
+const menu = new URL('./assets/web/menu-swap.png',
+    import.meta.url).href;
+const blackhold = new URL('./assets/web/menu-blackhold.png',
+    import.meta.url).href;
+const book = new URL('./assets/web/menu-book.png',
+    import.meta.url).href;
+const city = new URL('./assets/web/menu-city.png',
+    import.meta.url).href;
+const ifo = new URL('./assets/web/menu-ifo.png',
+    import.meta.url).href;
+const invite = new URL('./assets/web/menu-invite.png',
+    import.meta.url).href;
+const market = new URL('./assets/web/menu-market.png',
+    import.meta.url).href;
+const nft = new URL('./assets/web/menu-nft.png',
+    import.meta.url).href;
+const planet = new URL('./assets/web/menu-planet.png',
+    import.meta.url).href;
+const star = new URL('./assets/web/menu-star.png',
+    import.meta.url).href;
 
 export const routes = [{
         path: '/',
@@ -27,46 +46,145 @@ export const routes = [{
         name: "Home",
         meta: {
             name: 'router.home',
-            homepage: true
+            isVisiable: false
         }
     },
     {
         path: '/Swap',
         component: Swap,
         name: 'Swap',
+        meta: {
+            name: 'home.SnailSwap',
+            isVisiable: true,
+            icon: menu
+        }
     },
     {
         path: '/Pool',
         component: Pool,
         name: 'Pool',
+        meta: {
+            name: 'home.PlanetPool',
+            isVisiable: true,
+            icon: planet
+        }
+    },
+    {
+        path: '/Blackhole',
+        name: 'Blackhole',
+        redirect: '/',
+        meta: {
+            name: 'home.blackhole',
+            isVisiable: true,
+            chickEvent: 'notice',
+            icon: blackhold
+        }
+    },
+    {
+        path: '/NFT',
+        redirect: '/BlindBox',
+        // component: NFT,
+        name: 'NFT',
+        meta: {
+            name: 'home.nft',
+            isVisiable: true,
+            icon: nft
+        },
+        children: [{
+                path: '/BlindBox',
+                component: NftBlindBox,
+                name: 'BlindBox',
+                meta: {
+                    name: 'home.BlindBox',
+                    isVisiable: true
+                }
+            },
+            {
+                path: '/Illustrated',
+                component: NftIllustrated,
+                name: 'Illustrated',
+                meta: {
+                    name: 'home.Illustrated',
+                    isVisiable: true
+                }
+            }
+        ]
+    },
+    {
+        path: '/Market',
+        name: 'Market',
+        redirect: '/',
+        meta: {
+            name: 'home.Market',
+            isVisiable: true,
+            chickEvent: 'notice',
+            icon: market
+        }
+    },
+    {
+        path: '/UCity',
+        name: 'UCity',
+        redirect: '/',
+        meta: {
+            name: 'home.UndergroundCity',
+            isVisiable: true,
+            chickEvent: 'notice',
+            icon: city
+        }
+    },
+    {
+        path: '/Ifo',
+        name: 'Ifo',
+        redirect: '/',
+        meta: {
+            name: 'home.ifo',
+            isVisiable: true,
+            chickEvent: 'notice',
+            icon: ifo
+        }
+    },
+    {
+        path: '/StarLeague',
+        name: 'StarLeague',
+        redirect: '/',
+        meta: {
+            name: 'home.StarLeague',
+            isVisiable: true,
+            chickEvent: 'notice',
+            icon: star
+        }
+    },
+    {
+        path: '/whilePaper',
+        name: 'whilePaper',
+        redirect: '/',
+        meta: {
+            name: 'home.whilePaper',
+            isVisiable: true,
+            chickEvent: 'open',
+            url: 'STARPOOlWhilePaper.doc',
+            icon: book
+        }
     },
     {
         path: '/Invite',
         component: Invite,
-        name: 'Invite'
+        name: 'Invite',
+        meta: {
+            name: 'home.Invite',
+            isVisiable: true,
+            icon: invite
+        }
     },
     {
         path: '/Venus',
         component: Venus,
-        name: 'Venus'
+        name: 'Venus',
+        meta: {
+            isVisiable: false,
+        }
     },
-    {
-        path: '/NFT',
-        // redirect: '/BlindBox',
-        component: NFT,
-        name: 'NFT'
-            // children: [{
-            //         path: '/BlindBox',
-            //         component: BlindBox,
-            //         name: 'BlindBox',
-            //     },
-            //     {
-            //         path: '/Illustrated',
-            //         component: Illustrated,
-            //         name: 'Illustrated'
-            //     }
-            // ]
-    },
+
     // {
     //     path: '/Guess',
     //     component: Guess,
@@ -169,7 +287,10 @@ export const routes = [{
     // },
     {
         path: "/:pathMatch(.*)",
-        redirect: "/"
+        redirect: "/",
+        meta: {
+            isVisiable: false
+        }
     }
 ]
 
