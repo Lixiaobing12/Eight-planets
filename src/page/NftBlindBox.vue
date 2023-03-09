@@ -21,6 +21,8 @@ import Illustrated from './Illustrated.vue';
   overflow: auto;
   background-image: url('@/assets/web/nft-bg.png');
   background-size: cover;
+  padding-top: 50px;
+
   .but-group {
     width: 80%;
     height: 50px;

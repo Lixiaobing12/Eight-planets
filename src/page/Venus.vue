@@ -47,6 +47,7 @@ const {locale} = useI18n();
   overflow: auto;
   background-image: url("@/assets/web/venus-bg.png");
   background-size: cover;
+  padding-top: 50px;
 
   .title {
     width: 90%;

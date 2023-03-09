@@ -46,7 +46,7 @@ const confirm = () => {
   text-align: center;
   position: relative;
   overflow: auto;
-
+  padding-top: 50px;
   .img-top {
     margin-top: 40px;
     position: relative;

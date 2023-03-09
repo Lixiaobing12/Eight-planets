@@ -255,7 +255,7 @@ const onselectItem = (item) => {
   background: rgba(20, 26, 35, 0.5);
   width: 95%;
   border-radius: 20px;
-  margin: 20px auto;
+  margin: 50px auto;
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -266,6 +266,7 @@ const onselectItem = (item) => {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     & > div {
       display: flex;
       justify-content: flex-start;

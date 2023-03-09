@@ -124,6 +124,7 @@ const toLink = (path) => {
   display: grid;
   grid-template-columns: 1fr 1fr;
   //   grid-template-rows: 200px, 200px, 200px, 200px;
+  padding-top: 50px;
 
   .ring {
     background-image: url("@/assets/web/planet/round.png");

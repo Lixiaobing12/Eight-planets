@@ -6,6 +6,7 @@ import i18n from './utils/i18n/setupI18n'
 import 'animate.css';
 // 通用字体
 import 'vfonts/Lato.css'
+// import 'amfe-flexible'
 import {
     // create naive ui
     create

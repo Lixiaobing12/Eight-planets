@@ -90,6 +90,7 @@ const inviteUrl = ref("");
   overflow: auto;
   background-image: url("@/assets/web/planet/bg.png");
   background-size: cover;
+  padding-top: 50px;
 
   .title {
     display: flex;
