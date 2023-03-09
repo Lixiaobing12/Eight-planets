@@ -5,7 +5,21 @@
         <img src="/logo.png" width="50" alt="" />
         <div class="title">SNAIL SWAP</div>
       </div>
-
+      <div class="pc-view">
+        <n-menu
+          style="
+            --n-item-text-color-active-hover-horizontal: #fff;
+            --n-item-text-color-active-horizontal: #fff;
+            --n-item-text-color-hover-horizontal: #fff;
+            --n-item-text-color: #c0c0c0;
+          "
+          mode="horizontal"
+          :options="menuOptions"
+          :root-indent="36"
+          :indent="2"
+          :on-update:value="onMenuClick"
+        />
+      </div>
       <div>
         <n-button color="#59c2cb" @click="connect">
           {{ account ? FORMATTER_ADDRS(account) : "Unlock Wallet" }}
@@ -18,6 +32,7 @@
           @click="changeLang"
         />
         <img
+          class="h5-view"
           src="@/assets/web/to-left.png"
           width="25"
           alt=""
@@ -41,7 +56,7 @@
     placement="right"
     style="top: 50px; background: #0b2438; color: #fff; max-width: 240px"
   >
-    <n-drawer-content>
+    <n-drawer-content class="h5-view-drawer">
       <n-menu
         :collapsed-width="64"
         :collapsed-icon-size="22"
@@ -100,6 +115,11 @@ const store = useStore();
 const active = ref(false);
 const account = computed(() => store.state.web3.defaultAccount);
 const metaName = computed(() => route.meta.name || "router.home");
+const isH5 = ref(false);
+window.onresize = (e) => {
+  isH5.value = e.target.innerWidth < 400;
+  console.log("isH5", isH5.value);
+};
 // 连接钱包
 const connect = async () => {
   if (!account.value) {
@@ -107,30 +127,32 @@ const connect = async () => {
     message.info(t("home.connectSuccess"));
   }
 };
-const menuOptions = computed(() => {
-  return routes
-    .filter((i) => i.meta.isVisiable)
-    .map((item) => {
-      return {
-        label: t(item.meta.name),
-        key: item.name,
-        path: item.path,
-        chickEvent: item.meta.chickEvent || "nomal",
-        icon: renderIcon(item.meta.icon),
-        meta: item.meta,
-        children: item.children
-          ? item.children
-              .filter((i) => i.meta.isVisiable)
-              .map((i) => ({
-                label: t(i.meta.name),
-                key: i.name,
-                meta: i.meta,
-                path: i.path,
-                chickEvent: item.meta.chickEvent || "nomal",
-              }))
-          : "",
-      };
-    });
+const menuOptions = computed({
+  get: () => {
+    return routes
+      .filter((i) => i.meta.isVisiable)
+      .map((item) => {
+        return {
+          label: t(item.meta.name),
+          key: item.name,
+          path: item.path,
+          chickEvent: item.meta.chickEvent || "nomal",
+          icon: isH5.value ? renderIcon(item.meta.icon) : null,
+          meta: item.meta,
+          children: item.children
+            ? item.children
+                .filter((i) => i.meta.isVisiable)
+                .map((i) => ({
+                  label: t(i.meta.name),
+                  key: i.name,
+                  meta: i.meta,
+                  path: i.path,
+                  chickEvent: item.meta.chickEvent || "nomal",
+                }))
+            : "",
+        };
+      });
+  },
 });
 // 切换语言
 const changeLang = () => {
@@ -189,7 +211,7 @@ const onMenuClick = (key, item) => {
   // router.push({ path });
 };
 // 跳转外链
- const toURL = (i) => {
+const toURL = (i) => {
   window.open(i);
 };
 // 返回首页
@@ -199,6 +221,26 @@ const toHome = () => {
 window.$message = useMessage();
 </script>
 <style lang="less" scoped>
+.h5-view {
+  display: none;
+}
+.pc-view {
+  display: block;
+}
+::v-deep(.n-menu) {
+  .n-menu--horizontal
+    .n-menu-item-content:not(.n-menu-item-content--disabled):hover {
+    font-size: 1.2em;
+  }
+}
+@media screen and (max-width: 400px) {
+  .h5-view {
+    display: block;
+  }
+  .pc-view {
+    display: none !important;
+  }
+}
 .layout {
   height: 100vh;
   width: 100vw;
@@ -219,14 +261,15 @@ window.$message = useMessage();
     color: #fff;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px 10px 10px;
+    justify-content: space-around;
+    height: 80px;
+    padding: 0 20px;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1;
-    background: transparent;
+    background: rgba(0, 0, 0, 0.4);
 
     & > div {
       display: flex;
@@ -238,7 +281,13 @@ window.$message = useMessage();
       margin-left: 10px;
     }
   }
-
+  @media screen and (max-width: 400px) {
+    .layout-context {
+      height: auto;
+      justify-content: space-between;
+      padding: 10px 20px 10px 10px;
+    }
+  }
   .layout-footer {
     color: #000;
     display: flex;
@@ -274,46 +323,49 @@ window.$message = useMessage();
   flex-direction: column;
   justify-content: space-between;
 }
-::v-deep(.n-menu) {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 90%;
-  .n-menu-item-content {
-    padding-left: 20px !important;
-  }
-  .n-menu-item {
-    background-image: url("@/assets/web/menu-bg.png");
-    background-size: 100% 100%;
-    height: 35px;
-    .n-menu-item-content-header {
+.h5-view-drawer {
+  ::v-deep(.n-menu) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 90%;
+    .n-menu-item-content {
+      padding-left: 20px !important;
+    }
+    .n-menu-item {
+      background-image: url("@/assets/web/menu-bg.png");
+      background-size: 100% 100%;
+      height: 35px;
+      .n-menu-item-content-header {
+        color: #fff;
+      }
+    }
+    .n-submenu-children {
+      .n-menu-item {
+        background-image: none;
+      }
+    }
+    .n-menu-item-content:not(.n-menu-item-content--disabled):hover::before {
+      background-color: inherit;
+    }
+    .n-menu-item-content:not(.n-menu-item-content--disabled):hover
+      .n-menu-item-content-header {
       color: #fff;
     }
-  }
-  .n-submenu-children {
-    .n-menu-item {
-      background-image: none;
+    .n-menu-item-content:not(.n-menu-item-content--disabled):hover
+      .n-menu-item-content__arrow {
+      color: #fff;
+    }
+    .n-menu-item-content.n-menu-item-content--collapsed
+      .n-menu-item-content__arrow {
+      color: #fff;
+    }
+    .n-menu-item-content.n-menu-item-content--selected::before {
+      background-color: inherit;
     }
   }
-  .n-menu-item-content:not(.n-menu-item-content--disabled):hover::before {
-    background-color: inherit;
-  }
-  .n-menu-item-content:not(.n-menu-item-content--disabled):hover
-    .n-menu-item-content-header {
-    color: #fff;
-  }
-  .n-menu-item-content:not(.n-menu-item-content--disabled):hover
-    .n-menu-item-content__arrow {
-    color: #fff;
-  }
-  .n-menu-item-content.n-menu-item-content--collapsed
-    .n-menu-item-content__arrow {
-    color: #fff;
-  }
-  .n-menu-item-content.n-menu-item-content--selected::before{
-    background-color: inherit;
-  }
 }
+
 .imgs {
   width: 100%;
   display: flex;

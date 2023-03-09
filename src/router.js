@@ -18,6 +18,7 @@ import NftBlindBox from '@/page/NftBlindBox.vue';
 import NftIllustrated from '@/page/NftIllustrated.vue';
 import Invite from '@/page/Invite.vue';
 import Venus from '@/page/Venus.vue';
+import Ido from '@/page/Ido.vue';
 
 const menu = new URL('./assets/web/menu-swap.png',
     import.meta.url).href;
@@ -39,14 +40,29 @@ const planet = new URL('./assets/web/menu-planet.png',
     import.meta.url).href;
 const star = new URL('./assets/web/menu-star.png',
     import.meta.url).href;
+const home = new URL('./assets/web/menu-home.png',
+    import.meta.url).href;
+const ido = new URL('./assets/web/menu-ido.png',
+    import.meta.url).href;
 
 export const routes = [{
         path: '/',
         component: Home,
         name: "Home",
         meta: {
-            name: 'router.home',
-            isVisiable: false
+            name: 'router.page',
+            isVisiable: true,
+            icon: home
+        }
+    },
+    {
+        path: '/Ido',
+        component: Ido,
+        name: 'Ido',
+        meta: {
+            name: 'ido',
+            isVisiable: true,
+            icon: ido
         }
     },
     {
