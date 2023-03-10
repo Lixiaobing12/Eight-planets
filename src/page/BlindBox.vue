@@ -5,7 +5,7 @@
         <img
           src="@/assets/web/blind.png"
           alt=""
-          style="width: 100%; max-width: 400px;margin-top:-50px;"
+          style="width: 80%; max-width: 400px;"
         />
       </n-grid-item>
       <n-grid-item span="0 m:1"></n-grid-item>
@@ -26,7 +26,7 @@
               <n-input
                 v-model:value="inputAmount"
                 type="text"
-                style="width: 60%"
+                style="width: 80%"
                 placeholder=""
               >
                 <template #suffix>
@@ -37,7 +37,7 @@
               <n-button
                 size="large"
                 style="
-                  width: 60%;
+                  width: 80%;
                   margin: 20px 0;
                   border-radius: 15px;
                   background: #59c2cb;
@@ -88,10 +88,11 @@
 .nft-card {
   background-image: url("@/assets/res/nftsmallbj.png");
   background-size: 100% 100%;
-  width: 100%;
+  width: 90%;
   text-align: center;
   padding: 16px;
   max-width: 370px;
+  margin: 20px auto;
   p {
     text-align: left;
     font-size: 0.9em;

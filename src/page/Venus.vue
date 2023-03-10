@@ -104,8 +104,8 @@ const toLink = (path) => {
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  background-image: url("@/assets/res/home-bg5.png");
-  background-size: cover;
+  background-image: url("@/assets/res/NFTBJ.png");
+  background-size: 100% 100%;
   padding-top: 80px;
 }
 .context {
@@ -146,7 +146,7 @@ const toLink = (path) => {
 }
 @media screen and (max-width: 400px) {
   .bg {
-    padding: 50px 0;
+    padding: 50px 0 0;
     background-image: url("@/assets/web/venus-bg.png");
   }
   .h5-view {

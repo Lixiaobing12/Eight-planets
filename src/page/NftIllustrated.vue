@@ -1,5 +1,5 @@
 <template>
-  <div style="display: flex; flex-direction: column; height: 100%">
+  <div class="bg">
     <div class="context">
       <div>
         <Illustrated />
@@ -15,13 +15,22 @@ import Nfooter from "@/layout/footer.vue";
 </script>
 
 <style lang="less" scoped>
+.bg {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background-image: url("@/assets/res/NFTBJ.png");
+  background-size: 100% 100%;
+  padding-top: 100px;
+}
 .context {
   text-align: center;
   position: relative;
-  background-image: url("@/assets/res/NFTBJ.png");
-  background-size: cover;
-  padding-top: 100px;
-
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
   .but-group {
     width: 80%;
     height: 50px;
@@ -43,6 +52,13 @@ import Nfooter from "@/layout/footer.vue";
       width: 60%;
       background-image: linear-gradient(90deg, #330d69, #30c9cd);
     }
+  }
+}
+
+@media screen and (max-width:400px) {
+  .bg {
+    padding: 80px 0 0;
+    background-image: url("@/assets/web/venus-bg.png");
   }
 }
 </style>

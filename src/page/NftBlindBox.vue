@@ -1,5 +1,5 @@
 <template>
-  <div style="display: flex; flex-direction: column; height: 100%">
+  <div class="bg">
     <div class="context">
       <div>
         <BlindBox />
@@ -15,18 +15,22 @@ import Nfooter from "@/layout/footer.vue";
 </script>
 
 <style lang="less" scoped>
+.bg {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background-image: url("@/assets/res/NFTBJ.png");
+  background-size: 100% 100%;
+  padding-top: 80px;
+}
 .context {
-  padding: 20px;
   text-align: center;
   position: relative;
-  background-image: url("@/assets/res/NFTBJ.png");
-  background-size: cover;
-  padding-top: 80px;
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  
+  margin-bottom: 50px;
   .but-group {
     width: 80%;
     height: 50px;
@@ -50,9 +54,11 @@ import Nfooter from "@/layout/footer.vue";
     }
   }
 }
+
 @media screen and (max-width:400px) {
-  .context{
-    padding-top: 50px;
+  .bg {
+    padding: 50px 0 0;
+    background-image: url("@/assets/web/venus-bg.png");
   }
 }
 </style>

@@ -1,107 +1,161 @@
 <template>
   <div class="context">
-    <img src="@/assets/web/home-banner.png" style="width: 100%" alt="" />
-    <img src="@/assets/web/home-tip1.png" style="width: 80%" alt="" />
-    <div style="margin: -40px 0 20px 20px; width: 80%">
-      {{ $t("home.tip1") }}
-    </div>
-    <img src="@/assets/web/home-tip2.png" style="width: 80%" alt="" />
-    <div style="margin: -40px 0 20px 20px; width: 80%">
-      {{ $t("home.tip2") }}
-    </div>
-
-    <div style="text-align: center; margin-top: 40px">
-      <div style="display: flex; align-items: center; justify-content: center">
-        <img src="@/assets/web/home-transparent-lobo.png" width="40" alt="" />
-        <div style="margin-left: 20px; font-size: 1.5em">SNAIL SWAP</div>
-      </div>
-      <div style="font-size: 2em; marign-top: 2em; font-weight: 700">
-        {{ $t("home.Donate") }}
-      </div>
-
-      <n-input
-        v-model:value="inputAmount"
-        type="text"
-        style="width: 60%; color: #fff"
-        placeholder=""
-      >
-        <template #suffix>
-          <span @click="max">MAX</span>
-        </template>
-      </n-input>
-      <div style="width: 80%; text-align: center; margin: 20px auto">
-        <n-grid x-gap="12" :cols="2">
-          <n-gi>
-            <div class="but" @click="buy">
-              <n-spin :size="16" v-if="locading" stroke="#fff"/>
-              <span v-else>{{ $t("home.pay") }}</span>
+    <div style="text-align: center; flex: 1">
+      <n-grid cols="1 m:4" responsive="screen" :y-gap="48">
+        <n-grid-item span="0 m:1"> </n-grid-item>
+        <n-grid-item>
+          <div class="bg">
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <img
+                src="@/assets/web/home-transparent-lobo.png"
+                width="40"
+                alt=""
+              />
+              <div style="margin-left: 20px; font-size: 1.5em">SNAIL SWAP</div>
             </div>
-          </n-gi>
-          <n-gi>
-            <div class="but withdraw">{{ $t("home.withward") }}</div>
-          </n-gi>
-        </n-grid>
-      </div>
+            <div style="font-size: 2em; marign-top: 2em; font-weight: 700">
+              {{ $t("home.Donate") }}
+            </div>
 
-      <div>
-        <div class="data-img ethimg">
-          <span>{{ $t("home.amount") }}：</span>
-          <span>0.05 - 5 ETH</span>
-        </div>
-        <div class="data-img">
-          <span>{{ $t("home.Quantity") }}：</span>
-          <span>10,000,000</span>
-        </div>
-      </div>
-      <div>
-        <div style="text-align: left; margin: 80px 0 0">
-          <img src="@/assets/web/home-coming.png" alt="" style="width: 180px" />
-        </div>
-        <div style="position: relative; display: flex; align-items: center">
-          <img src="@/assets/web/home-ifo.png" alt="" style="width: 100%" />
-          <span
-            style="position: absolute; left: 10px; right: 10px; bottom: 20px"
-            :style="{ bottom: locale === 'en' ? '5px' : '20px' }"
-            >{{ $t("home.tip3") }}</span
-          >
-        </div>
-        <div style="position: relative; display: flex; align-items: center">
-          <img src="@/assets/web/home-nft.png" alt="" style="width: 100%" />
-          <span
-            style="position: absolute; left: 10px; right: 10px; bottom: 20px"
-            :style="{ bottom: locale === 'en' ? '5px' : '20px' }"
-            >{{ $t("home.tip4") }}</span
-          >
-        </div>
-        <div style="position: relative; display: flex; align-items: center">
-          <img src="@/assets/web/home-game.png" alt="" style="width: 100%" />
-          <span
-            style="position: absolute; left: 10px; right: 10px; bottom: 20px"
-            :style="{ bottom: locale === 'en' ? '5px' : '20px' }"
-            >{{ $t("home.tip5") }}</span
-          >
-        </div>
-      </div>
+            <n-input
+              v-model:value="inputAmount"
+              type="text"
+              style="width: 60%; color: #fff"
+              placeholder=""
+            >
+              <template #suffix>
+                <span @click="max">MAX</span>
+              </template>
+            </n-input>
+            <div style="width: 80%; text-align: center; margin: 20px auto">
+              <n-grid x-gap="12" :cols="2">
+                <n-gi>
+                  <div class="but1" @click="buy">
+                    <n-spin :size="16" v-if="locading" stroke="#fff" />
+                    <span v-else>{{ $t("home.pay") }}</span>
+                  </div>
+                </n-gi>
+                <n-gi>
+                  <div class="but1 withdraw">{{ $t("home.withward") }}</div>
+                </n-gi>
+              </n-grid>
+            </div>
 
-      <div>
-        <img
-          src="@/assets/web/home-footer.png"
-          alt=""
-          style="width: 100%; margin: 50px 0"
-        />
-        <div
-          style="
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 50px;
-          "
-        >
-          <img src="@/assets/web/discord.png" alt="" width="30" />
-          <img src="@/assets/web/twitter.png" alt="" width="30" />
-          <img src="@/assets/web/telegram.png" alt="" width="30" />
-        </div>
-      </div>
+            <div style="width:100%">
+              <div class="data-img ethimg">
+                <span>{{ $t("home.amount") }}：</span>
+                <span>0.05 - 5 ETH</span>
+              </div>
+              <div class="data-img">
+                <span>{{ $t("home.Quantity") }}：</span>
+                <span>10,000,000</span>
+              </div>
+            </div>
+          </div>
+        </n-grid-item>
+        <n-grid-item>
+          <div style="max-width: 400px; padding: 0 20px">
+            <div class="title">
+              <img
+                src="@/assets/web/home-transparent-lobo.png"
+                alt=""
+                width="40"
+              />
+              <img src="@/assets/web/invite-r.png" alt="" class="img2" />
+            </div>
+            <div class="bg1">
+              <div style="margin-bottom: 30px">
+                <div style="display: flex">
+                  <span>{{ $t("home.inviteLink") }}：</span>
+                  <span style="flex: 1; background: #9ba2a9">{{
+                    inviteUrl
+                  }}</span>
+                </div>
+                <div class="but">
+                  <n-button
+                    color="#59c2cb"
+                    style="padding: 7px 30px; height: auto"
+                    >{{ $t("home.Bind") }}</n-button
+                  >
+                </div>
+              </div>
+
+              <div style="margin-bottom: 30px">
+                <div style="display: flex">
+                  <span>{{ $t("home.MyLink") }}：</span>
+                  <span style="flex: 1; background: #9ba2a9">{{
+                    inviteUrl
+                  }}</span>
+                </div>
+                <div class="but">
+                  <n-button
+                    color="#59c2cb"
+                    style="padding: 7px 30px; height: auto"
+                    >{{ $t("home.copy") }}</n-button
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="bg2">
+              <div>
+                <n-grid x-gap="12" :cols="2">
+                  <n-gi>
+                    <div>{{ $t("home.invitees") }}</div>
+                    <div
+                      style="
+                        color: #00c5cd;
+                        font-size: 2em;
+                        font-style: italic;
+                        font-weight: 700;
+                      "
+                    >
+                      0
+                    </div>
+                  </n-gi>
+                  <n-gi>
+                    <div>{{ $t("home.Reward") }}</div>
+                    <div
+                      style="
+                        color: #00c5cd;
+                        font-size: 2em;
+                        font-style: italic;
+                        font-weight: 700;
+                      "
+                    >
+                      0
+                      <span
+                        style="
+                          color: #00c5cd;
+                          font-size: 12px;
+                          font-style: italic;
+                          font-weight: 700;
+                        "
+                        >SNAIL</span
+                      >
+                    </div>
+                  </n-gi>
+                </n-grid>
+                <div style="margin: 20px 0">
+                  <n-button
+                    color="#59c2cb"
+                    style="padding: 7px 30px; height: auto"
+                    >{{ $t("home.withward") }}</n-button
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </n-grid-item>
+        <n-grid-item span="0 m:1"> </n-grid-item>
+      </n-grid>
     </div>
+    <Nfooter />
   </div>
 </template>
 <script setup>
@@ -115,6 +169,7 @@ import { FORMATTER_ADDRS } from "@/utils/methods.js";
 import { useMessage } from "naive-ui";
 import BigNumber from "bignumber.js";
 import loading from "naive-ui/es/_internal/loading";
+import Nfooter from "@/layout/footer.vue";
 
 const { t, locale } = useI18n();
 const router = useRouter();
@@ -178,12 +233,28 @@ const toLink = (path) => {
 </script>
 <style lang="less" scoped>
 .context {
-  height: 100%;
-  padding: 20px;
+  min-height: 100%;
   text-align: left;
   position: relative;
-  overflow: auto;
+  background-image: url("@/assets/res/NFTBJ.png");
+  background-size: cover;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
 
+  .bg {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px 0;
+    border-radius: 20px;
+    margin: 20px auto;
+    width: 90vw;
+    max-width: 380px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
   .n-input {
     background: transparent;
     ::v-deep(.n-input__input-el) {
@@ -200,28 +271,29 @@ const toLink = (path) => {
     }
   }
 
-  .but {
-    background-image: url("@/assets/web/home-but.png");
+  .but1 {
+    background-image: url("@/assets/web/home-n.png");
     background-size: 100% 100%;
     color: #fff;
     font-weight: 700;
     padding: 7px 16px;
+    text-align: center;
   }
   .withdraw {
     filter: opacity(0.5);
   }
 
   .data-img {
-    background-image: url("@/assets/web/home-n.png");
-    background-size: 100% 100%;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 25px;
     color: #fff;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     width: 80%;
     margin: 20px auto;
-    height: 50px;
     padding: 0 16px;
+    height: 50px;
     font-size: 1.2em;
 
     & span:nth-of-type(2) {
@@ -230,7 +302,40 @@ const toLink = (path) => {
     }
   }
   .ethimg {
-    background-image: url("@/assets/web/home-eth.png");
+  }
+
+  .title {
+    display: flex;
+    margin: 20px auto;
+    justify-content: center;
+    align-items: center;
+
+    .img2 {
+      width: 180px;
+      margin-left: 20px;
+    }
+  }
+
+  .bg1 {
+    background-image: url("@/assets/web/invite-bg1.png");
+    background-size: 100% 100%;
+    padding: 40px 40px 20px;
+    text-align: left;
+    font-size: 0.9em;
+  }
+
+  .but {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 0 30px;
+  }
+
+  .bg2 {
+    margin-top: 30px;
+    background-image: url("@/assets/web/invite-bg2.png");
+    background-size: 100% 100%;
+    padding: 40px 40px 20px;
+    font-size: 0.9em;
   }
 }
 </style>
