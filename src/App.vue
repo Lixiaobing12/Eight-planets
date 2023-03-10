@@ -43,6 +43,21 @@ export default defineComponent({
 
 <style lang="less">
 body {
+  .h5-view {
+    display: none;
+  }
+  .pc-view {
+    display: block;
+  }
+
+  @media screen and (max-width: 400px) {
+    .h5-view {
+      display: block;
+    }
+    .pc-view {
+      display: none !important;
+    }
+  }
   color: #fff;
   * {
     box-sizing: border-box;

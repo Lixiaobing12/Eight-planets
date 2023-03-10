@@ -217,19 +217,19 @@
         </n-grid-item>
       </n-grid>
     </n-space>
+    <n-tag
+      round
+      style="
+        background: transparent;
+        color: #fff;
+        font-weight: 700;
+        border: 0;
+        padding: 10px 20px;
+        --n-border: 4px solid #888f8f;
+      "
+      >ENTER</n-tag
+    >
     <n-space justify="center" align="center">
-      <n-tag
-        round
-        style="
-          background: transparent;
-          color: #fff;
-          font-weight: 700;
-          border: 0;
-          padding: 10px 20px;
-          --n-border: 4px solid #888f8f;
-        "
-        >ENTER</n-tag
-      >
       <div style="text-align: center; margin-top: 20px" class="span-media">
         Everyone will be allowed to put any number of any planet tokens into the
         black hole All tokens put into the black hole will be destroyed

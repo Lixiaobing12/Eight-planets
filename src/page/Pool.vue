@@ -141,7 +141,7 @@ const toLink = (path) => {
   align-items: center;
   justify-content: center;
   flex: 1;
-  background-image: url("@/assets/res/home-bg3.png");
+  background-image: url("@/assets/res/home-bg5.png");
   background-size: cover;
 
   .ring {
@@ -152,6 +152,9 @@ const toLink = (path) => {
     position: relative;
     justify-content: center;
     align-items: center;
+    width: 170px;
+    height: 170px;
+    cursor: pointer;
 
     div {
       position: absolute;
@@ -173,6 +176,12 @@ const toLink = (path) => {
     100% {
       transform: rotateZ(360deg);
     }
+  }
+}
+@media screen and (max-width: 400px) {
+  .context {
+    padding: 50px 0;
+    background-image: url("@/assets/web/venus-bg.png");
   }
 }
 </style>

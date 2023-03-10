@@ -86,6 +86,8 @@ const getURL = () => {
   align-items: center;
   justify-content: space-between;
   margin: 20px 0;
+  max-width: 350px;
+  width: 90vw;
   .title {
     display: flex;
     justify-content: space-between;

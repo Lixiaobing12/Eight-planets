@@ -1,34 +1,33 @@
 <template>
-  <div class="context">
-    <div>
-        <Illustrated/>
+  <div style="display: flex; flex-direction: column; height: 100%">
+    <div class="context">
+      <div>
+        <Illustrated />
+      </div>
     </div>
+    <Nfooter />
   </div>
 </template>
 <script setup>
-import BlindBox from './BlindBox.vue';
-import Illustrated from './Illustrated.vue';
-
-
+import BlindBox from "./BlindBox.vue";
+import Illustrated from "./Illustrated.vue";
+import Nfooter from "@/layout/footer.vue";
 </script>
 
 <style lang="less" scoped>
 .context {
-  height: 100%;
-  padding: 20px;
   text-align: center;
   position: relative;
-  overflow: auto;
-  background-image: url('@/assets/web/nft-bg.png');
+  background-image: url("@/assets/res/NFTBJ.png");
   background-size: cover;
-  padding-top: 50px;
+  padding-top: 100px;
 
   .but-group {
     width: 80%;
     height: 50px;
     background: #2f3e6e;
     border-radius: 25px;
-    margin: 20px auto ;
+    margin: 20px auto;
     display: flex;
     align-items: center;
 

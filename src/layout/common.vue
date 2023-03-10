@@ -12,6 +12,10 @@
             --n-item-text-color-active-horizontal: #fff;
             --n-item-text-color-hover-horizontal: #fff;
             --n-item-text-color: #c0c0c0;
+            --n-item-text-color-child-active-horizontal:#fff;
+            --n-item-text-color-child-active-hover-horizontal:#fff;
+            --n-option-text-color-active:#fff;
+            --n-option-text-color-child-active:#fff;
           "
           mode="horizontal"
           :options="menuOptions"
@@ -221,24 +225,10 @@ const toHome = () => {
 window.$message = useMessage();
 </script>
 <style lang="less" scoped>
-.h5-view {
-  display: none;
-}
-.pc-view {
-  display: block;
-}
 ::v-deep(.n-menu) {
   .n-menu--horizontal
     .n-menu-item-content:not(.n-menu-item-content--disabled):hover {
     font-size: 1.2em;
-  }
-}
-@media screen and (max-width: 400px) {
-  .h5-view {
-    display: block;
-  }
-  .pc-view {
-    display: none !important;
   }
 }
 .layout {
