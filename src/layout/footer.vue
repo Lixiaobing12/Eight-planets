@@ -1,5 +1,5 @@
 <template>
-  <div style="background: #000; padding: 50px 10px">
+  <div style="background: rgba(0,0,0,0.6); padding: 50px 10px">
     <n-grid cols="1 m:4" responsive="screen" item-responsive>
       <n-grid-item span="0 :m 1"> </n-grid-item>
       <n-grid-item>

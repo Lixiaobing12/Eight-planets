@@ -1,5 +1,5 @@
 <template>
-  <div style="display: flex; flex-direction: column; height: 100%">
+  <div class="bg">
     <div class="context">
       <n-space justify="center" align="center">
         <n-grid cols="2 m:4 " responsive="screen" :x-gap="48" :y-gap="48">
@@ -133,6 +133,13 @@ const toLink = (path) => {
 };
 </script>
 <style lang="less" scoped>
+.bg {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background-image: url("@/assets/res/home-bg5.png");
+  background-size: cover;
+}
 .context {
   padding: 80px 0;
   text-align: center;
@@ -141,8 +148,6 @@ const toLink = (path) => {
   align-items: center;
   justify-content: center;
   flex: 1;
-  background-image: url("@/assets/res/home-bg5.png");
-  background-size: cover;
 
   .ring {
     background-image: url("@/assets/web/planet/round.png");
@@ -179,8 +184,7 @@ const toLink = (path) => {
   }
 }
 @media screen and (max-width: 400px) {
-  .context {
-    padding: 50px 0;
+  .bg {
     background-image: url("@/assets/web/venus-bg.png");
   }
 }

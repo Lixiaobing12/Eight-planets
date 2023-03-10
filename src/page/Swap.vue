@@ -3,13 +3,13 @@
     <div class="but-group">
       <div :class="{ isActive: active === 0 }" @click="active = 0">Swap</div>
       <div :class="{ isActive: active === 1 }">
-      <!-- <div :class="{ isActive: active === 1 }" @click="active = 1"> -->
+        <!-- <div :class="{ isActive: active === 1 }" @click="active = 1"> -->
         Liquidity
       </div>
     </div>
     <component :is="view" />
+    <Nfooter />
   </div>
-  <Nfooter/>
 </template>
 <script setup>
 import { useMessage } from "naive-ui";
@@ -43,12 +43,14 @@ const confirm = () => {
 </script>
 <style lang="less" scoped>
 .context {
+  background-image: url("@/assets/res/home-bg3.png");
+  background-size: cover;
   // height: 80%;
-  padding: 20px;
+  padding: 20px 0 0;
   text-align: center;
   position: relative;
-  overflow: auto;
   padding-top: 100px;
+
   .img-top {
     margin-top: 40px;
     position: relative;

@@ -1,15 +1,16 @@
 <template>
-  <div style="display: flex; flex-direction: column; height: 100%">
+  <div class="bg">
     <div class="context">
       <n-space justify="space-around" align="center">
         <div
           class="pc-view"
           @click="toLink('/Pool')"
-          style="    cursor: pointer;
-    text-align: center;
-    display: flex;
-    align-items: center;
-}"
+          style="
+            cursor: pointer;
+            text-align: center;
+            display: flex;
+            align-items: center;
+          "
         >
           <n-icon>
             <ArrowLeft />
@@ -99,13 +100,17 @@ const toLink = (path) => {
 .h5-view {
   display: none !important;
 }
-
+.bg {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background-image: url("@/assets/res/home-bg5.png");
+  background-size: cover;
+  padding-top: 80px;
+}
 .context {
-  padding: 80px 0;
   text-align: center;
   position: relative;
-  background-image: url("@/assets/res/home-bg5.png");
-  background-size: 100% 100%;
 
   .title {
     width: 90%;
@@ -140,7 +145,7 @@ const toLink = (path) => {
   }
 }
 @media screen and (max-width: 400px) {
-  .context {
+  .bg {
     padding: 50px 0;
     background-image: url("@/assets/web/venus-bg.png");
   }

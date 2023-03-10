@@ -235,8 +235,8 @@
         black hole All tokens put into the black hole will be destroyed
       </div>
     </n-space>
+    <Nfooter style="margin-top:50px;"/>
   </div>
-  <Nfooter />
 </template>
 <script setup>
 import useState from "@/plugins/useState";
@@ -393,7 +393,7 @@ const toLink = (path) => {
   position: relative;
   overflow: hidden;
   align-items: center;
-  padding: 50px 0;
+  padding: 50px 0 0;
   text-align: right;
   justify-content: center;
 
