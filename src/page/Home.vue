@@ -225,18 +225,18 @@
           color: #fff;
           font-weight: 700;
           border: 0;
-          padding:10px 20px;
-          --n-border:4px solid #888f8f;
+          padding: 10px 20px;
+          --n-border: 4px solid #888f8f;
         "
         >ENTER</n-tag
       >
-      <div style="text-align: center; margin-top: 20px;" class="span-media">
+      <div style="text-align: center; margin-top: 20px" class="span-media">
         Everyone will be allowed to put any number of any planet tokens into the
         black hole All tokens put into the black hole will be destroyed
       </div>
     </n-space>
   </div>
-  <Nfooter/>
+  <Nfooter />
 </template>
 <script setup>
 import useState from "@/plugins/useState";
@@ -250,7 +250,7 @@ import { useMessage } from "naive-ui";
 import BigNumber from "bignumber.js";
 import loading from "naive-ui/es/_internal/loading";
 import { CaretRight24Filled } from "@vicons/fluent";
-import Nfooter from "../layout/footer.vue";
+import Nfooter from "@/layout/footer.vue";
 
 const { t, locale } = useI18n();
 const router = useRouter();
@@ -322,13 +322,13 @@ const toLink = (path) => {
 </script>
 <style lang="less" scoped>
 .context {
-  min-height: 70%;
+  min-height: 85%;
   text-align: left;
   position: relative;
   overflow: auto;
   background-image: url("@/assets/res/home-bg1.png");
   background-size: cover;
-  padding-top: 50px;
+  padding-top: 100px;
 }
 .context2 {
   min-height: 300px;
@@ -407,6 +407,7 @@ const toLink = (path) => {
 @media screen and (max-width: 400px) {
   .context {
     height: 100%;
+    padding-top: 50px;
   }
   .media-img {
     width: 280px;
@@ -448,7 +449,7 @@ const toLink = (path) => {
     height: 240px;
     margin-left: -50px;
   }
-  .span-media{
+  .span-media {
     width: 90%;
     margin: 0 auto;
   }

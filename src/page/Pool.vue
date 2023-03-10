@@ -1,130 +1,148 @@
 <template>
-  <div class="context">
-    <div class="ring" @click="toLink('/Venus')">
-      <img
-        src="@/assets/web/planet/planet1.png"
-        alt=""
-        width="120"
-        class="round"
-      />
-      <div>
-        <span>Venus</span>
-        <span v-show="locale === 'zh'">金星</span>
-      </div>
+  <div style="display: flex; flex-direction: column; height: 100%">
+    <div class="context">
+      <n-space justify="center" align="center">
+        <n-grid cols="2 m:4 " responsive="screen" :x-gap="48" :y-gap="48">
+          <n-grid-item>
+            <div class="ring" @click="toLink('/Venus')">
+              <img
+                src="@/assets/web/planet/planet1.png"
+                alt=""
+                width="120"
+                class="round"
+              />
+              <div>
+                <span>Venus</span>
+                <span v-show="locale === 'zh'">金星</span>
+              </div>
+            </div>
+          </n-grid-item>
+          <n-grid-item>
+            <div class="ring">
+              <img
+                src="@/assets/web/planet/planet2.png"
+                alt=""
+                width="120"
+                class="round"
+              />
+              <div>
+                <span>Jupiter</span>
+                <span v-show="locale === 'zh'">木星</span>
+              </div>
+            </div>
+          </n-grid-item>
+          <n-grid-item>
+            <div class="ring">
+              <img
+                src="@/assets/web/planet/planet3.png"
+                alt=""
+                width="120"
+                class="round"
+              />
+              <div>
+                <span>Mercury </span>
+                <span v-show="locale === 'zh'">水星</span>
+              </div>
+            </div>
+          </n-grid-item>
+          <n-grid-item>
+            <div class="ring">
+              <img
+                src="@/assets/web/planet/planet4.png"
+                alt=""
+                width="120"
+                class="round"
+              />
+              <div>
+                <span>Mars </span>
+                <span v-show="locale === 'zh'">火星</span>
+              </div>
+            </div>
+          </n-grid-item>
+          <n-grid-item>
+            <div class="ring">
+              <img
+                src="@/assets/web/planet/planet5.png"
+                alt=""
+                width="120"
+                class="round"
+              />
+              <div>
+                <span>Saturn </span>
+                <span v-show="locale === 'zh'">土星</span>
+              </div>
+            </div>
+          </n-grid-item>
+          <n-grid-item>
+            <div class="ring">
+              <img
+                src="@/assets/web/planet/planet6.png"
+                alt=""
+                width="120"
+                class="round"
+              />
+              <div>
+                <span>Uranus </span>
+                <span v-show="locale === 'zh'">海王星</span>
+              </div>
+            </div>
+          </n-grid-item>
+          <n-grid-item>
+            <div class="ring">
+              <img
+                src="@/assets/web/planet/planet7.png"
+                alt=""
+                width="120"
+                class="round"
+              />
+              <div>
+                <span>Neptune </span>
+                <span v-show="locale === 'zh'">冥王星</span>
+              </div>
+            </div>
+          </n-grid-item>
+          <n-grid-item>
+            <div class="ring">
+              <img
+                src="@/assets/web/planet/planet8.png"
+                alt=""
+                width="120"
+                class="round"
+              />
+              <div>
+                <span>Earth </span>
+                <span v-show="locale === 'zh'">地球</span>
+              </div>
+            </div>
+          </n-grid-item>
+        </n-grid>
+      </n-space>
     </div>
-    <div class="ring">
-      <img
-        src="@/assets/web/planet/planet2.png"
-        alt=""
-        width="120"
-        class="round"
-      />
-      <div>
-        <span>Jupiter</span>
-        <span v-show="locale === 'zh'">木星</span>
-      </div>
-    </div>
-
-    <div class="ring">
-      <img
-        src="@/assets/web/planet/planet3.png"
-        alt=""
-        width="120"
-        class="round"
-      />
-      <div>
-        <span>Mercury </span>
-        <span v-show="locale === 'zh'">水星</span>
-      </div>
-    </div>
-
-    <div class="ring">
-      <img
-        src="@/assets/web/planet/planet4.png"
-        alt=""
-        width="120"
-        class="round"
-      />
-      <div>
-        <span>Mars </span>
-        <span v-show="locale === 'zh'">火星</span>
-      </div>
-    </div>
-
-    <div class="ring">
-      <img
-        src="@/assets/web/planet/planet5.png"
-        alt=""
-        width="120"
-        class="round"
-      />
-      <div>
-        <span>Saturn </span>
-        <span v-show="locale === 'zh'">土星</span>
-      </div>
-    </div>
-
-    <div class="ring">
-      <img
-        src="@/assets/web/planet/planet6.png"
-        alt=""
-        width="120"
-        class="round"
-      />
-      <div>
-        <span>Uranus </span>
-        <span v-show="locale === 'zh'">海王星</span>
-      </div>
-    </div>
-    <div class="ring">
-      <img
-        src="@/assets/web/planet/planet7.png"
-        alt=""
-        width="120"
-        class="round"
-      />
-      <div>
-        <span>Neptune </span>
-        <span v-show="locale === 'zh'">冥王星</span>
-      </div>
-    </div>
-    <div class="ring">
-      <img
-        src="@/assets/web/planet/planet8.png"
-        alt=""
-        width="120"
-        class="round"
-      />
-      <div>
-        <span>Earth </span>
-        <span v-show="locale === 'zh'">地球</span>
-      </div>
-    </div>
+    <Nfooter />
   </div>
 </template>
 <script setup>
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
+import Nfooter from "@/layout/footer.vue";
 
 const router = useRouter();
-const {locale} = useI18n();
+const { locale } = useI18n();
 const toLink = (path) => {
   router.push({ path });
 };
 </script>
 <style lang="less" scoped>
 .context {
-  height: 100%;
-  padding: 20px;
+  padding: 80px 0;
   text-align: center;
   position: relative;
-  overflow: auto;
-  background-image: url("@/assets/web/planet/bg.png");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  background-image: url("@/assets/res/home-bg3.png");
   background-size: cover;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  //   grid-template-rows: 200px, 200px, 200px, 200px;
-  padding-top: 50px;
 
   .ring {
     background-image: url("@/assets/web/planet/round.png");

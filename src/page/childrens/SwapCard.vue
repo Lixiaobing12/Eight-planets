@@ -168,7 +168,7 @@
   </div>
   <n-modal v-model:show="showModal">
     <n-card
-      style="width: 90%; max-width: 500px; border-radius: 30px"
+      style="width: 90%; max-width: 400px; border-radius: 30px"
       title="Select a token"
       :bordered="false"
       size="huge"
@@ -219,6 +219,7 @@
       </n-list>
     </n-card>
   </n-modal>
+
 </template>
 <script setup>
 import { Settings } from "@vicons/carbon";
@@ -254,6 +255,7 @@ const onselectItem = (item) => {
 .content {
   background: rgba(20, 26, 35, 0.5);
   width: 95%;
+  max-width: 400px;
   border-radius: 20px;
   margin: 50px auto;
   padding: 16px;

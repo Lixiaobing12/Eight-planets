@@ -244,7 +244,7 @@ window.$message = useMessage();
 .layout {
   height: 100vh;
   width: 100vw;
-  background-image: url("@/assets/web/body-bg.png");
+  background-image: url("@/assets/res/home-bg3.png");
   background-size: cover;
 
   position: relative;

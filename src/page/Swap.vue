@@ -9,6 +9,7 @@
     </div>
     <component :is="view" />
   </div>
+  <Nfooter/>
 </template>
 <script setup>
 import { useMessage } from "naive-ui";
@@ -17,6 +18,7 @@ import { useI18n } from "vue-i18n";
 import { useStore } from "vuex";
 import Swap from "./childrens/SwapCard.vue";
 import Liquidity from "./childrens/SwapLiquidity.vue";
+import Nfooter from "@/layout/footer.vue";
 
 const message = useMessage();
 const { t } = useI18n();
@@ -41,12 +43,12 @@ const confirm = () => {
 </script>
 <style lang="less" scoped>
 .context {
-  height: 100%;
+  // height: 80%;
   padding: 20px;
   text-align: center;
   position: relative;
   overflow: auto;
-  padding-top: 50px;
+  padding-top: 100px;
   .img-top {
     margin-top: 40px;
     position: relative;
@@ -66,6 +68,7 @@ const confirm = () => {
   .but-group {
     width: 80%;
     height: 50px;
+    max-width: 350px;
     background: #2f3e6e;
     border-radius: 25px;
     margin: 20px auto;
