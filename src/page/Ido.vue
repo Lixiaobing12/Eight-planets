@@ -1,159 +1,189 @@
 <template>
   <div class="context">
-    <div style="text-align: center; flex: 1">
-      <n-grid cols="1 m:4" responsive="screen" :y-gap="48">
-        <n-grid-item span="0 m:1"> </n-grid-item>
-        <n-grid-item>
-          <div class="bg">
-            <div
-              style="
-                display: flex;
-                align-items: center;
-                justify-content: center;
-              "
-            >
-              <img
-                src="@/assets/web/home-transparent-lobo.png"
-                width="40"
-                alt=""
-              />
-              <div style="margin-left: 20px; font-size: 1.5em">SNAIL SWAP</div>
-            </div>
-            <div style="font-size: 2em; marign-top: 2em; font-weight: 700">
-              {{ $t("home.Donate") }}
-            </div>
-
-            <n-input
-              v-model:value="inputAmount"
-              type="text"
-              style="width: 60%; color: #fff"
-              placeholder=""
-            >
-              <template #suffix>
-                <span @click="max">MAX</span>
-              </template>
-            </n-input>
-            <div style="width: 80%; text-align: center; margin: 20px auto">
-              <n-grid x-gap="12" :cols="2">
-                <n-gi>
-                  <div class="but1" @click="buy">
-                    <n-spin :size="16" v-if="locading" stroke="#fff" />
-                    <span v-else>{{ $t("home.pay") }}</span>
-                  </div>
-                </n-gi>
-                <n-gi>
-                  <div class="but1 withdraw">{{ $t("home.withward") }}</div>
-                </n-gi>
-              </n-grid>
-            </div>
-
-            <div style="width:100%">
-              <div class="data-img ethimg">
-                <span>{{ $t("home.amount") }}：</span>
-                <span>0.05 - 5 ETH</span>
-              </div>
-              <div class="data-img">
-                <span>{{ $t("home.Quantity") }}：</span>
-                <span>10,000,000</span>
-              </div>
-            </div>
-          </div>
-        </n-grid-item>
-        <n-grid-item>
-          <div style="max-width: 400px; padding: 0 20px">
-            <div class="title">
-              <img
-                src="@/assets/web/home-transparent-lobo.png"
-                alt=""
-                width="40"
-              />
-              <img src="@/assets/web/invite-r.png" alt="" class="img2" />
-            </div>
-            <div class="bg1">
-              <div style="margin-bottom: 30px">
-                <div style="display: flex">
-                  <span>{{ $t("home.inviteLink") }}：</span>
-                  <span style="flex: 1; background: #9ba2a9">{{
-                    inviteUrl
-                  }}</span>
+    <div style="text-align: center; flex: 1; padding: 20px 0 50px">
+      <n-space justify="center" align="center">
+        <n-grid cols="1 m:4" responsive="screen" :y-gap="48">
+          <n-grid-item span="0 m:1"> </n-grid-item>
+          <n-grid-item>
+            <div class="bg">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <img
+                  src="@/assets/web/home-transparent-lobo.png"
+                  width="40"
+                  alt=""
+                />
+                <div style="margin-left: 20px; font-size: 1.5em">
+                  SNAIL SWAP
                 </div>
-                <div class="but">
-                  <n-button
-                    color="#59c2cb"
-                    style="padding: 7px 30px; height: auto"
-                    >{{ $t("home.Bind") }}</n-button
-                  >
-                </div>
+              </div>
+              <div style="font-size: 2em; marign-top: 2em; font-weight: 700">
+                {{ $t("home.Donate") }}
               </div>
 
-              <div style="margin-bottom: 30px">
-                <div style="display: flex">
-                  <span>{{ $t("home.MyLink") }}：</span>
-                  <span style="flex: 1; background: #9ba2a9">{{
-                    inviteUrl
-                  }}</span>
-                </div>
-                <div class="but">
-                  <n-button
-                    color="#59c2cb"
-                    style="padding: 7px 30px; height: auto"
-                    >{{ $t("home.copy") }}</n-button
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="bg2">
-              <div>
+              <n-input
+                v-model:value="inputAmount"
+                type="text"
+                style="width: 60%; color: #fff"
+                placeholder=""
+              >
+                <template #suffix>
+                  <span @click="max">MAX</span>
+                </template>
+              </n-input>
+              <div style="width: 80%; text-align: center; margin: 20px auto">
                 <n-grid x-gap="12" :cols="2">
                   <n-gi>
-                    <div>{{ $t("home.invitees") }}</div>
-                    <div
-                      style="
-                        color: #00c5cd;
-                        font-size: 2em;
-                        font-style: italic;
-                        font-weight: 700;
-                      "
-                    >
-                      0
+                    <div class="but1" @click="buy">
+                      <n-spin :size="16" v-if="locading" stroke="#fff" />
+                      <span v-else>{{ $t("home.pay") }}</span>
                     </div>
                   </n-gi>
                   <n-gi>
-                    <div>{{ $t("home.Reward") }}</div>
-                    <div
-                      style="
-                        color: #00c5cd;
-                        font-size: 2em;
-                        font-style: italic;
-                        font-weight: 700;
-                      "
+                    <div class="but1 withdraw">{{ $t("home.withward") }}</div>
+                  </n-gi>
+                </n-grid>
+              </div>
+
+              <div style="width: 100%">
+                <div class="data-img ethimg">
+                  <span>{{ $t("home.amount") }}：</span>
+                  <span>0.05 - 5 ETH</span>
+                </div>
+                <div class="data-img">
+                  <span>{{ $t("home.Quantity") }}：</span>
+                  <span>10,000,000</span>
+                </div>
+              </div>
+            </div>
+          </n-grid-item>
+          <n-grid-item>
+            <div style="max-width: 400px; padding: 0 20px">
+              <div class="title">
+                <img
+                  src="@/assets/web/home-transparent-lobo.png"
+                  alt=""
+                  width="40"
+                />
+                <img src="@/assets/web/invite-r.png" alt="" class="img2" />
+              </div>
+              <div class="bg1">
+                <div style="margin-bottom: 30px">
+                  <div style="display: flex">
+                    <span>{{ $t("home.inviteLink") }}：</span>
+                    <n-scrollbar x-scrollable>
+                      <div
+                        style="
+                          flex: 1;
+                          background: #9ba2a9;
+                          min-width: 200px;
+                          white-space: nowrap;
+                          padding: 5px 10px;
+                          height: 30px;
+                        "
+                      >
+                        {{ parent || parentUrl }}
+                      </div>
+                    </n-scrollbar>
+                  </div>
+                  <div class="but" v-show="!parent">
+                    <n-button
+                      :loading="bindLoading"
+                      color="#59c2cb"
+                      style="padding: 7px 30px; height: auto"
+                      @click="bind"
+                      >{{ $t("home.Bind") }}</n-button
                     >
-                      0
-                      <span
+                  </div>
+                </div>
+
+                <div style="margin-bottom: 30px">
+                  <div style="display: flex">
+                    <span>{{ $t("home.MyLink") }}：</span>
+                    <n-scrollbar x-scrollable>
+                      <div
+                        style="
+                          flex: 1;
+                          background: #9ba2a9;
+                          min-width: 200px;
+                          white-space: nowrap;
+                          padding: 5px 10px;
+                          height: 30px;
+                        "
+                      >
+                        {{ inviteUrl }}
+                      </div>
+                    </n-scrollbar>
+                  </div>
+                  <div class="but">
+                    <n-button
+                      color="#59c2cb"
+                      style="padding: 7px 30px; height: auto"
+                      class="copy"
+                      @click="copy"
+                      >{{ $t("home.copy") }}</n-button
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="bg2">
+                <div>
+                  <n-grid x-gap="12" :cols="2">
+                    <n-gi>
+                      <div>{{ $t("home.invitees") }}</div>
+                      <div
                         style="
                           color: #00c5cd;
-                          font-size: 12px;
+                          font-size: 2em;
                           font-style: italic;
                           font-weight: 700;
                         "
-                        >SNAIL</span
                       >
-                    </div>
-                  </n-gi>
-                </n-grid>
-                <div style="margin: 20px 0">
-                  <n-button
-                    color="#59c2cb"
-                    style="padding: 7px 30px; height: auto"
-                    >{{ $t("home.withward") }}</n-button
-                  >
+                        {{ inviteSize }}
+                      </div>
+                    </n-gi>
+                    <n-gi>
+                      <div>{{ $t("home.Reward") }}</div>
+                      <div
+                        style="
+                          color: #00c5cd;
+                          font-size: 2em;
+                          font-style: italic;
+                          font-weight: 700;
+                        "
+                      >
+                        0
+                        <span
+                          style="
+                            color: #00c5cd;
+                            font-size: 12px;
+                            font-style: italic;
+                            font-weight: 700;
+                          "
+                          >SNAIL</span
+                        >
+                      </div>
+                    </n-gi>
+                  </n-grid>
+                  <div style="margin: 20px 0">
+                    <n-button
+                      color="#59c2cb"
+                      style="padding: 7px 30px; height: auto"
+                      >{{ $t("home.withward") }}</n-button
+                    >
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </n-grid-item>
-        <n-grid-item span="0 m:1"> </n-grid-item>
-      </n-grid>
+          </n-grid-item>
+          <n-grid-item span="0 m:1"> </n-grid-item>
+        </n-grid>
+      </n-space>
     </div>
     <Nfooter />
   </div>
@@ -170,6 +200,7 @@ import { useMessage } from "naive-ui";
 import BigNumber from "bignumber.js";
 import loading from "naive-ui/es/_internal/loading";
 import Nfooter from "@/layout/footer.vue";
+import Clipboard from "clipboard";
 
 const { t, locale } = useI18n();
 const router = useRouter();
@@ -181,6 +212,22 @@ const account = computed(() => {
   return store.state.web3.defaultAccount;
 });
 const locading = ref(false);
+const parent = ref("");
+const inviteSize = ref(0);
+const bindLoading = ref(false);
+const inviteUrl = computed(() => {
+  return account
+    ? window.origin + "?ref=" + store.state.web3.defaultAccount
+    : "";
+});
+
+const parentUrl = computed(() => {
+  let ref = route.query.ref;
+  if (ref === account.value) {
+    ref = "";
+  }
+  return ref || "";
+});
 
 let amount = ref("0");
 const isActive = ref(false);
@@ -214,8 +261,51 @@ const buy = async () => {
     locading.value = false;
   }
 };
+const bind = () => {
+  if (parent.value) {
+    return;
+  } else if (parentUrl.value) {
+    bindLoading.value = true;
+    store
+      .dispatch("web3/invite", parentUrl.value)
+      .then((res) => {
+        message.success(t("home.bind"));
+      })
+      .finally((res) => {
+        bindLoading.value = false;
+      });
+  }
+};
+
+// 复制连接
+const copy = () => {
+  var clipboard = new Clipboard(".copy");
+  clipboard.on("success", (e) => {
+    message.success(t("mine.copySuccess"));
+    // 释放内存
+    clipboard.destroy();
+  });
+  clipboard.on("error", (e) => {
+    console.log("e", e);
+    // 不支持复制
+    // 释放内存
+    clipboard.destroy();
+  });
+};
 let interval = null;
 const fetch = () => {
+  document
+    .querySelector(".copy")
+    .setAttribute("data-clipboard-text", inviteUrl.value);
+
+  store.dispatch("web3/getInviter").then((res) => {
+    if (res !== "0x0000000000000000000000000000000000000000") {
+      parent.value = res;
+    }
+  });
+  store.dispatch("web3/getInviterSunSize").then((res) => {
+    inviteSize.value = res;
+  });
   if (interval) clearInterval(interval);
   interval = setInterval(() => {
     store.dispatch("web3/isActive").then((res) => {
@@ -226,6 +316,7 @@ const fetch = () => {
     });
   }, 1500);
 };
+
 watch(account, fetch);
 const toLink = (path) => {
   router.push(path);
@@ -246,7 +337,6 @@ const toLink = (path) => {
     background: rgba(0, 0, 0, 0.5);
     padding: 40px 0;
     border-radius: 20px;
-    margin: 20px auto;
     width: 90vw;
     max-width: 380px;
     height: 100%;
@@ -254,6 +344,7 @@ const toLink = (path) => {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    margin: 0 auto;
   }
   .n-input {
     background: transparent;

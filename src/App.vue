@@ -9,6 +9,7 @@
 import {
   computed,
   defineComponent,
+  nextTick,
   onBeforeMount,
   onMounted,
 } from "@vue/runtime-core";
@@ -26,14 +27,19 @@ export default defineComponent({
   },
   setup() {
     const route = useRoute();
+    const router = useRouter();
     const path = computed(() => route.path);
     const { t, locale } = useI18n();
 
-    // onBeforeMount(() => {
-    //   const lang = localStorage.getItem("lang");
-    //   i18n.global.locale.value = lang;
-    //   locale.value = lang;
-    // });
+    onBeforeMount(() => {
+      console.log(route);
+      const ref = route.query.ref;
+      if (ref) {
+        nextTick(() => {
+           router.push({ path: "/Ido", query: { ref } });
+        });
+      }
+    });
     return {
       path,
     };
@@ -68,8 +74,8 @@ body {
     bottom: 250px;
 
     .n-message {
-      background-image: linear-gradient(90deg, #b235da 50%, #5621ff);
-      color: #00f1ff;
+      background-image: linear-gradient(90deg, #330d69, #30c9cd);
+      color: #fff;
       border-radius: 20px;
     }
   }

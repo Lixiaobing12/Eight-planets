@@ -1,6 +1,6 @@
 <template>
   <div class="context">
-    <div style="max-width:400px;margin:20px auto;padding:20px">
+    <div style="max-width: 400px; margin: 20px auto; padding: 20px">
       <div class="title">
         <img src="@/assets/web/home-transparent-lobo.png" alt="" />
         <img src="@/assets/web/invite-r.png" alt="" class="img2" />
@@ -9,24 +9,58 @@
         <div style="margin-bottom: 30px">
           <div style="display: flex">
             <span>{{ $t("home.inviteLink") }}：</span>
-            <span style="flex: 1; background: #9ba2a9">{{ inviteUrl }}</span>
+            <n-scrollbar x-scrollable>
+              <div
+                style="
+                  flex: 1;
+                  background: #9ba2a9;
+                  min-width: 200px;
+                  white-space: nowrap;
+                  padding: 5px 10px;
+                  height: 30px;
+                "
+              >
+                {{ parent || parentUrl }}
+              </div>
+            </n-scrollbar>
           </div>
-          <div class="but">
-            <n-button color="#59c2cb" style="padding: 7px 30px; height: auto">{{
-              $t("home.Bind")
-            }}</n-button>
+          <div class="but" v-show="!parent">
+            <n-button
+              :loading="bindLoading"
+              color="#59c2cb"
+              style="padding: 7px 30px; height: auto"
+              @click="bind"
+              >{{ $t("home.Bind") }}</n-button
+            >
           </div>
         </div>
 
         <div style="margin-bottom: 30px">
           <div style="display: flex">
             <span>{{ $t("home.MyLink") }}：</span>
-            <span style="flex: 1; background: #9ba2a9">{{ inviteUrl }}</span>
+            <n-scrollbar x-scrollable>
+              <div
+                style="
+                  flex: 1;
+                  background: #9ba2a9;
+                  min-width: 200px;
+                  white-space: nowrap;
+                  padding: 5px 10px;
+                  height: 30px;
+                "
+              >
+                {{ inviteUrl }}
+              </div>
+            </n-scrollbar>
           </div>
           <div class="but">
-            <n-button color="#59c2cb" style="padding: 7px 30px; height: auto">{{
-              $t("home.copy")
-            }}</n-button>
+            <n-button
+              color="#59c2cb"
+              style="padding: 7px 30px; height: auto"
+              class="copy"
+              @click="copy"
+              >{{ $t("home.copy") }}</n-button
+            >
           </div>
         </div>
       </div>
@@ -43,7 +77,7 @@
                   font-weight: 700;
                 "
               >
-                0
+                {{ inviteSize }}
               </div>
             </n-gi>
             <n-gi>
@@ -82,7 +116,79 @@
 </template>
 <script setup>
 import Nfooter from "@/layout/footer.vue";
-const inviteUrl = ref("");
+import { useMessage } from "naive-ui";
+import { computed, watch, ref } from "vue";
+import { useI18n } from "vue-i18n";
+import { useRoute } from "vue-router";
+import { useStore } from "vuex";
+import Clipboard from "clipboard";
+
+const message = useMessage();
+const { t } = useI18n();
+const store = useStore();
+const route = useRoute();
+const account = computed(() => store.state.web3.defaultAccount);
+const parent = ref("");
+const bindLoading = ref(false);
+const inviteSize = ref(0);
+const inviteUrl = computed(() => {
+  return account
+    ? window.origin + "?ref=" + store.state.web3.defaultAccount
+    : "";
+});
+watch(account, () => {
+  document
+    .querySelector(".copy")
+    .setAttribute("data-clipboard-text", inviteUrl.value);
+
+  store.dispatch("web3/getInviter").then((res) => {
+    if (res !== "0x0000000000000000000000000000000000000000") {
+      parent.value = res;
+    }
+  });
+  store.dispatch("web3/getInviterSunSize").then((res) => {
+    inviteSize.value = res;
+  });
+});
+const parentUrl = computed(() => {
+  let ref = route.query.ref;
+  if (ref === account.value) {
+    ref = "";
+  }
+  return ref || "";
+});
+
+const bind = () => {
+  if (parent.value) {
+    return;
+  } else if (parentUrl.value) {
+    bindLoading.value = true;
+    store
+      .dispatch("web3/invite", parentUrl.value)
+      .then((res) => {
+        message.success(t("home.bind"));
+      })
+      .finally((res) => {
+        bindLoading.value = false;
+      });
+  }
+};
+
+// 复制连接
+const copy = () => {
+  var clipboard = new Clipboard(".copy");
+  clipboard.on("success", (e) => {
+    message.success(t("mine.copySuccess"));
+    // 释放内存
+    clipboard.destroy();
+  });
+  clipboard.on("error", (e) => {
+    console.log("e", e);
+    // 不支持复制
+    // 释放内存
+    clipboard.destroy();
+  });
+};
 </script>
 <style lang="less" scoped>
 .context {
@@ -127,8 +233,8 @@ const inviteUrl = ref("");
     font-size: 0.9em;
   }
 }
-@media screen and (max-width:400px) {
-  .context{
+@media screen and (max-width: 400px) {
+  .context {
     padding-top: 30px;
   }
 }

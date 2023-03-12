@@ -15,7 +15,7 @@
           <n-icon>
             <ArrowLeft />
           </n-icon>
-          返回星球
+          {{$t('home.return')}}
         </div>
         <div class="title">
           <img src="@/assets/web/planet/planet1.png" alt="" />

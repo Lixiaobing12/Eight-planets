@@ -2,6 +2,7 @@ import { Web3Provider } from '@/utils/web3'
 import BigNumber from 'bignumber.js';
 import { STC, MINER, snailIdo } from '@/utils/Coins'
 import i18n from '@/utils/i18n/setUpI18n.js';
+import { snailInv } from '../../utils/Coins';
 
 
 
@@ -39,10 +40,30 @@ const actions = {
 
             return purchase(amount.toFixed(0)).send({ from: defaultAccount, value: amount.toFixed(0) })
         } else {
-
             window.$message.warning(i18n.global.t('home.placeConnect'))
             return Promise.reject()
         }
+    },
+    async getInviter(context) {
+        const defaultAccount = context.state.defaultAccount;
+        const web3 = context.state.web3;
+        if (defaultAccount) {
+            const { getInviter } = new web3.eth.Contract(snailInv.abi, snailInv.address).methods;
+            return getInviter(defaultAccount).call();
+        }
+        return ''
+    },
+    async invite(context, parent) {
+        const defaultAccount = context.state.defaultAccount;
+        const web3 = context.state.web3;
+        const { invite } = new web3.eth.Contract(snailInv.abi, snailInv.address).methods;
+        return invite(defaultAccount, parent).send({ from: defaultAccount });
+    },
+    async getInviterSunSize(context) {
+        const defaultAccount = context.state.defaultAccount;
+        const web3 = context.state.web3;
+        const { getInviterSunSize } = new web3.eth.Contract(snailInv.abi, snailInv.address).methods;
+        return getInviterSunSize(defaultAccount).call();
     }
 }
 const mutations = {

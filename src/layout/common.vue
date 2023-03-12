@@ -12,10 +12,10 @@
             --n-item-text-color-active-horizontal: #fff;
             --n-item-text-color-hover-horizontal: #fff;
             --n-item-text-color: #c0c0c0;
-            --n-item-text-color-child-active-horizontal:#fff;
-            --n-item-text-color-child-active-hover-horizontal:#fff;
-            --n-option-text-color-active:#fff;
-            --n-option-text-color-child-active:#fff;
+            --n-item-text-color-child-active-horizontal: #fff;
+            --n-item-text-color-child-active-hover-horizontal: #fff;
+            --n-option-text-color-active: #fff;
+            --n-option-text-color-child-active: #fff;
           "
           mode="horizontal"
           :options="menuOptions"
@@ -26,7 +26,7 @@
       </div>
       <div>
         <n-button color="#59c2cb" @click="connect">
-          {{ account ? FORMATTER_ADDRS(account) : "Unlock Wallet" }}
+          {{ account ? FORMATTER_ADDRS(account) : $t("home.connectWallet") }}
         </n-button>
         <img
           src="@/assets/web/lang.png"
@@ -47,7 +47,7 @@
     <div class="layout-body">
       <router-view v-slot="{ Component }">
         <transition name="fade">
-          <keep-alive exclude="StarTeam,Wallet,EarningsDetail">
+          <keep-alive>
             <component :is="Component" :key="route.name" />
           </keep-alive>
         </transition>

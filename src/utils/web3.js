@@ -13,7 +13,7 @@ export class Web3Provider {
                 method: 'wallet_switchEthereumChain',
                 params: [{
                     // chainId: '0x38',
-                    chainId: '0x61',
+                    chainId: '0xa4b1',
                 }]
             })
             web3Provider = window.ethereum;

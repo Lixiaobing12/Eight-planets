@@ -5,29 +5,35 @@
         <n-grid-item span="4 m:2 l:2">
           <div>
             <h1 style="font-size: 3em">SnailSwap</h1>
-            <h2>Super-Farm&Defi-Metaverse <br />&wonderful Gamefi</h2>
+            <h2>{{ $t("home.superFarm") }} <br />{{ $t("home.wonderful") }}</h2>
           </div>
           <n-space>
             <n-tag
+              @click="toLink('/Pool')"
               style="
                 background: #4033b9;
                 color: #fff;
                 font-weight: 700;
                 border: 0;
                 --n-border: 0;
+                padding: 0 15px;
+                cursor: pointer;
               "
               round
-              >Farm Now</n-tag
+              >{{ $t("home.farmNow") }}</n-tag
             >
             <n-tag
+              @click="toLink('/BlindBox')"
               round
               style="
                 background: transparent;
                 color: #fff;
                 font-weight: 700;
                 border: 0;
+                padding: 0 15px;
+                cursor: pointer;
               "
-              >Get Nft</n-tag
+              >{{ $t("home.getNft") }}</n-tag
             >
           </n-space>
         </n-grid-item>
@@ -56,7 +62,7 @@
               border: 0;
               padding: 0 40px;
             "
-            >eight Token</n-tag
+            >eight Farms</n-tag
           >
         </n-space>
       </n-grid-item>
@@ -114,22 +120,23 @@
         color="#161a2f"
         round
         style="margin-top: 20px; padding: 28px 0; border: 1px solid #fff"
+        @click="toLink('/Ido')"
       >
         <div style="display: flex; align-items: center; margin: 0 10px">
           <div style="font-size: 1.5em; margin-top: 3px; margin-right: 10px">
-            PEESALE
+            {{ $t("home.PEESALE") }}
           </div>
           <n-icon color="#858793" size="25"><CaretRight24Filled /></n-icon>
         </div>
       </n-button>
       <div style="text-align: center; margin-top: 20px">
-        Each address can be participate 0.05~5ETH, Tokens total amount
+        {{ $t("home.eachAdd") }}
       </div>
     </n-space>
   </div>
   <div class="context4">
     <n-space justify="center">
-      <n-grid cols="4" item-responsive responsive="screen">
+      <n-grid cols="4" item-responsive responsive="screen" :x-gap="24">
         <n-grid-item span="4 m:2 l:2">
           <img
             src="@/assets/res/home-row4-left.png"
@@ -139,23 +146,27 @@
         </n-grid-item>
         <n-grid-item span="4 m:2 l:2">
           <div>
-            <h1 style="font-size: 3em">First planet-VENUS</h1>
+            <h1 style="font-size: 3em">{{ $t("home.firstPlanet") }}</h1>
             <h3>
-              You can stake
+              {{ $t("home.ucans") }}
               <span style="color: #866c3a">VEN/USDC VEN/WETH</span> <br />
-              join in farm to Earn rewards
+              {{ $t("home.joinin") }}
             </h3>
           </div>
           <n-space>
             <n-tag
+              @click="toLink('/Venus')"
               round
               style="
                 background: transparent;
                 color: #fff;
                 font-weight: 700;
                 border: 0;
+                padding:0 15px;
+                cursor: pointer;
+
               "
-              >To Stake</n-tag
+              >{{ $t("home.toStake") }}</n-tag
             >
           </n-space>
         </n-grid-item>
@@ -192,10 +203,10 @@
       <div class="-bgimg">
         <h1>BLACK HOLE</h1>
         <h3>
-          <span style="color: #eca63d">GENERAL</span>
-          black hole and
-          <span style="color: #eca63d">SUPER</span>
-          black hole
+          <span style="color: #eca63d">{{ $t("home.general") }}</span>
+          {{ $t("home.blackholea") }}
+          <span style="color: #eca63d">{{ $t("home.super") }}</span>
+          {{ $t("home.blackhole") }}
         </h3>
       </div>
     </n-space>
@@ -227,15 +238,14 @@
         padding: 10px 20px;
         --n-border: 4px solid #888f8f;
       "
-      >ENTER</n-tag
+      >{{ $t("home.enter") }}</n-tag
     >
     <n-space justify="center" align="center">
       <div style="text-align: center; margin-top: 20px" class="span-media">
-        Everyone will be allowed to put any number of any planet tokens into the
-        black hole All tokens put into the black hole will be destroyed
+        {{ $t("home.blackholetip") }}
       </div>
     </n-space>
-    <Nfooter style="margin-top:50px;"/>
+    <Nfooter style="margin-top: 50px" />
   </div>
 </template>
 <script setup>
@@ -262,7 +272,6 @@ const account = computed(() => {
   return store.state.web3.defaultAccount;
 });
 const locading = ref(false);
-
 let amount = ref("0");
 const isActive = ref(false);
 // 连接钱包
@@ -402,6 +411,7 @@ const toLink = (path) => {
     background-size: 100% 100%;
     padding: 10px 16px;
     text-align: center;
+    min-width: 300px;
   }
 }
 @media screen and (max-width: 400px) {
