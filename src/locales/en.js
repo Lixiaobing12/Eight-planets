@@ -10,6 +10,13 @@ export default {
         langChange: 'Language Switching',
     },
     home: {
+        swapSuccess:"Exchange Success~",
+        Exchange:"Exchange",
+        tokenTransaction:"Token transaction",
+        setting:"Transaction Settings",
+        tolerance:"Slippage tolerance",
+        deadline:"Transaction deadline",
+        minutes:"minutes",
         ido: "Ido",
         swapa: "Swap",
         liquidity: "Liquidity",

@@ -6,21 +6,9 @@
           <n-grid-item span="0 m:1"> </n-grid-item>
           <n-grid-item>
             <div class="bg">
-              <div
-                style="
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                "
-              >
-                <img
-                  src="@/assets/web/home-transparent-lobo.png"
-                  width="40"
-                  alt=""
-                />
-                <div style="margin-left: 20px; font-size: 1.5em">
-                  SNAIL SWAP
-                </div>
+              <div style="display: flex; align-items: center; justify-content: center">
+                <img src="@/assets/web/home-transparent-lobo.png" width="40" alt="" />
+                <div style="margin-left: 20px; font-size: 1.5em">SNAIL SWAP</div>
               </div>
               <div style="font-size: 2em; marign-top: 2em; font-weight: 700">
                 {{ $t("home.Donate") }}
@@ -65,11 +53,7 @@
           <n-grid-item>
             <div style="max-width: 600px; padding: 0 20px">
               <div class="title">
-                <img
-                  src="@/assets/web/home-transparent-lobo.png"
-                  alt=""
-                  width="40"
-                />
+                <img src="@/assets/web/home-transparent-lobo.png" alt="" width="40" />
                 <img src="@/assets/web/invite-r.png" alt="" class="img2" />
               </div>
               <div class="bg1">
@@ -171,11 +155,9 @@
                     </n-gi>
                   </n-grid>
                   <div style="margin: 20px 0">
-                    <n-button
-                      color="#59c2cb"
-                      style="padding: 7px 30px; height: auto"
-                      >{{ $t("home.withward") }}</n-button
-                    >
+                    <n-button color="#59c2cb" style="padding: 7px 30px; height: auto">{{
+                      $t("home.withward")
+                    }}</n-button>
                   </div>
                 </div>
               </div>
@@ -194,7 +176,7 @@ import { useI18n } from "vue-i18n";
 import { useRouter, useRoute } from "vue-router";
 import { useFetch } from "@/utils/request.js";
 import { useStore } from "vuex";
-import { computed, onActivated, ref, watch } from "vue";
+import { computed, onActivated, ref, watch, nextTick } from "vue";
 import { FORMATTER_ADDRS } from "@/utils/methods.js";
 import { useMessage } from "naive-ui";
 import BigNumber from "bignumber.js";
@@ -216,9 +198,7 @@ const parent = ref("");
 const inviteSize = ref(0);
 const bindLoading = ref(false);
 const inviteUrl = computed(() => {
-  return account
-    ? window.origin + "?ref=" + store.state.web3.defaultAccount
-    : "";
+  return account ? window.origin + "?ref=" + store.state.web3.defaultAccount : "";
 });
 
 const parentUrl = computed(() => {
@@ -294,9 +274,9 @@ const copy = () => {
 };
 let interval = null;
 const fetch = () => {
-  document
-    .querySelector(".copy")
-    .setAttribute("data-clipboard-text", inviteUrl.value);
+  nextTick(() => {
+    document.querySelector(".copy").setAttribute("data-clipboard-text", inviteUrl.value);
+  });
 
   store.dispatch("web3/getInviter").then((res) => {
     if (res !== "0x0000000000000000000000000000000000000000") {

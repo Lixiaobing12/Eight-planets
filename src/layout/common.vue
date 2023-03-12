@@ -167,9 +167,9 @@ const changeLang = () => {
 
 // 跳转
 const onMenuClick = (key, item) => {
-  console.log(key, item);
-  if (item.meta && item.chickEvent === "notice") {
-    return message.info(t("home.Coming soon"));
+  if (item.meta && item.meta.chickEvent === "notice") {
+    message.info(t("home.Coming soon"));
+    return ;
   } else if (item.meta && item.chickEvent === "open") {
     window.open(item.meta.url);
     return;

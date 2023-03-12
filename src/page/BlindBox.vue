@@ -1,6 +1,7 @@
 <template>
   <n-space justify="center" align="center" style="height:100%;">
-    <n-grid cols="1 m:3" responsive="screen">
+    <n-grid cols="1 m:4" responsive="screen">
+      <n-grid-item span="0 m:1"></n-grid-item>
       <n-grid-item>
         <img
           src="@/assets/web/blind.png"
@@ -8,7 +9,6 @@
           style="width: 80%; max-width: 600px;"
         />
       </n-grid-item>
-      <n-grid-item span="0 m:1"></n-grid-item>
       <n-grid-item>
         <div class="nft-card">
           <div>
@@ -65,6 +65,8 @@
           </div>
         </div>
       </n-grid-item>
+      <n-grid-item span="0 m:1"></n-grid-item>
+
     </n-grid>
   </n-space>
 </template>

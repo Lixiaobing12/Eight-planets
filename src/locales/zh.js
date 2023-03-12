@@ -10,6 +10,13 @@ export default {
         langChange: '语言切换',
     },
     home: {
+        swapSuccess:"兑换成功~",
+        Exchange:"兑换",
+        tokenTransaction:"及时交易代币",
+        setting:"交易设置",
+        tolerance:"滑点设置",
+        deadline:"交易截止时间",
+        minutes:"分钟",
         ido: "捐献",
         swap: "兑换",
         swapa: "兑换",
