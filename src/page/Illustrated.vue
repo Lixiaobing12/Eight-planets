@@ -90,7 +90,7 @@ import { useI18n } from "vue-i18n";
 const { locale } = useI18n();
 const getImg = (name) => {
   let lang = locale.value === "en" ? "en" : "zh";
-  let path = `../assets/web/snail/${name}-${lang}.png`;
+  let path = `/dynamic/${name}-${lang}.png`;
 
   return new URL(path, import.meta.url).href;
 };

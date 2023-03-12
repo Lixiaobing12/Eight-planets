@@ -285,9 +285,9 @@ const connect = async () => {
 const getLangImg = computed(() => {
   let path =
     locale.value === "en"
-      ? "../assets/res/home-row5-center-en.png"
-      : "../assets/res/home-row5-center-zh.png";
-  return new URL(path, import.meta.url).href;
+      ? "/dynamic/home-row5-center-en.png"
+      : "/dynamic/home-row5-center-zh.png";
+  return path;
 });
 // 最大
 const max = () => {

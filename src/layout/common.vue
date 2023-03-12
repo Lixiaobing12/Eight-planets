@@ -162,10 +162,7 @@ const menuOptions = computed({
 const changeLang = () => {
   locale.value = locale.value === "zh" ? "en" : "zh";
 };
-// 动态图片
-const getURL = (i) => {
-  return new URL(`../assets/web/link-${i}.png`, import.meta.url).href;
-};
+
 // 跳转
 const onMenuClick = (key, item) => {
   console.log(key, item);

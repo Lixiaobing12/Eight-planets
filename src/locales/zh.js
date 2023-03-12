@@ -10,6 +10,8 @@ export default {
         langChange: '语言切换',
     },
     home: {
+        ido: "捐献",
+        swap: "兑换",
         bind: "已绑定",
         return: "返回星球",
         superFarm: '超级矿池&Defi-Metaverse',

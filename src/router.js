@@ -20,30 +20,18 @@ import Invite from '@/page/Invite.vue';
 import Venus from '@/page/Venus.vue';
 import Ido from '@/page/Ido.vue';
 
-const menu = new URL('./assets/web/menu-swap.png',
-    import.meta.url).href;
-const blackhold = new URL('./assets/web/menu-blackhold.png',
-    import.meta.url).href;
-const book = new URL('./assets/web/menu-book.png',
-    import.meta.url).href;
-const city = new URL('./assets/web/menu-city.png',
-    import.meta.url).href;
-const ifo = new URL('./assets/web/menu-ifo.png',
-    import.meta.url).href;
-const invite = new URL('./assets/web/menu-invite.png',
-    import.meta.url).href;
-const market = new URL('./assets/web/menu-market.png',
-    import.meta.url).href;
-const nft = new URL('./assets/web/menu-nft.png',
-    import.meta.url).href;
-const planet = new URL('./assets/web/menu-planet.png',
-    import.meta.url).href;
-const star = new URL('./assets/web/menu-star.png',
-    import.meta.url).href;
-const home = new URL('./assets/web/menu-home.png',
-    import.meta.url).href;
-const ido = new URL('./assets/web/menu-ido.png',
-    import.meta.url).href;
+const menu = '/dynamic/menu-swap.png'
+const blackhold = '/dynamic/menu-blackhold.png';
+const book = '/dynamic/menu-book.png';
+const city = '/dynamic/menu-city.png';
+const ifo = '/dynamic/menu-ifo.png';
+const invite = '/dynamic/menu-invite.png';
+const market = '/dynamic/menu-market.png';
+const nft = '/dynamic/menu-nft.png';
+const planet = '/dynamic/menu-planet.png';
+const star = '/dynamic/menu-star.png';
+const home = '/dynamic/menu-home.png';
+const ido = '/dynamic/menu-ido.png';
 
 export const routes = [{
         path: '/',
@@ -60,7 +48,7 @@ export const routes = [{
         component: Ido,
         name: 'Ido',
         meta: {
-            name: 'ido',
+            name: 'home.ido',
             isVisiable: true,
             icon: ido
         }
@@ -70,7 +58,7 @@ export const routes = [{
         component: Swap,
         name: 'Swap',
         meta: {
-            name: 'home.SnailSwap',
+            name: 'home.swap',
             isVisiable: true,
             icon: menu
         }
@@ -188,7 +176,7 @@ export const routes = [{
         name: 'Invite',
         meta: {
             name: 'home.Invite',
-            isVisiable: true,
+            isVisiable: false,
             icon: invite
         }
     },

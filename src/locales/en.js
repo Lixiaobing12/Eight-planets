@@ -10,6 +10,8 @@ export default {
         langChange: 'Language Switching',
     },
     home: {
+        ido: "Ido",
+        swap: "SnailSwap",
         bind: "Bound",
         return: "Return",
         superFarm: 'Super-Farm&Defi-Metaverse',
