@@ -120,10 +120,12 @@ const active = ref(false);
 const account = computed(() => store.state.web3.defaultAccount);
 const metaName = computed(() => route.meta.name || "router.home");
 const isH5 = ref(false);
-window.onresize = (e) => {
-  isH5.value = e.target.innerWidth < 400;
-  console.log("isH5", isH5.value);
-};
+onMounted(() => {
+  isH5.value = window.innerWidth < 600;
+  window.onresize = (e) => {
+    isH5.value = e.target.innerWidth < 400;
+  };
+});
 // 连接钱包
 const connect = async () => {
   if (!account.value) {
@@ -256,7 +258,7 @@ window.$message = useMessage();
     z-index: 1;
     background: rgba(0, 0, 0, 0.4);
 
-    & > div {
+    & > div:not(.pc-view) {
       display: flex;
       align-items: center;
     }
@@ -266,7 +268,7 @@ window.$message = useMessage();
       margin-left: 10px;
     }
   }
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 600px) {
     .layout-context {
       height: auto;
       justify-content: space-between;
@@ -318,7 +320,7 @@ window.$message = useMessage();
       padding-left: 20px !important;
     }
     .n-menu-item {
-      background-image: url("@/assets/web/menu-bg.png");
+      background-image: url("/dynamic/menu-bg.png");
       background-size: 100% 100%;
       height: 35px;
       .n-menu-item-content-header {

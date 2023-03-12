@@ -183,7 +183,7 @@ const toLink = (path) => {
     }
   }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .bg {
     background-image: url("@/assets/web/venus-bg.png");
   }

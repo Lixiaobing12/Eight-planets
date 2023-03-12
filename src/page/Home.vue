@@ -245,7 +245,7 @@
         {{ $t("home.blackholetip") }}
       </div>
     </n-space>
-    <Nfooter style="margin-top: 50px" />
+    <Nfooter style="margin-top: 50px;" />
   </div>
 </template>
 <script setup>
@@ -338,6 +338,7 @@ const toLink = (path) => {
   background-image: url("@/assets/res/home-bg1.png");
   background-size: cover;
   padding-top: 100px;
+  pointer-events: none;
 }
 .context2 {
   min-height: 300px;
@@ -347,6 +348,7 @@ const toLink = (path) => {
   background-size: cover;
   display: flex;
   align-items: center;
+  pointer-events: none;
 }
 .context3 {
   min-height: 300px;
@@ -357,6 +359,7 @@ const toLink = (path) => {
   display: flex;
   justify-content: center;
   align-items: center;
+  pointer-events: none;
 }
 .context4 {
   min-height: 400px;
@@ -366,6 +369,7 @@ const toLink = (path) => {
   background-image: url("@/assets/res/home-bg4.png");
   background-size: cover;
   padding-top: 50px;
+  pointer-events: none;
 
   .media-img-4 {
     width: 350px;
@@ -382,6 +386,7 @@ const toLink = (path) => {
   overflow: hidden;
   align-items: center;
   padding: 50px 0;
+  pointer-events: none;
   .title {
     position: relative;
     left: -350px;
@@ -394,6 +399,7 @@ const toLink = (path) => {
   }
 }
 .context6 {
+  pointer-events: none;
   min-height: 500px;
   background-image: url("@/assets/res/home-bg6.png");
   background-size: cover;
@@ -414,7 +420,13 @@ const toLink = (path) => {
     min-width: 300px;
   }
 }
-@media screen and (max-width: 400px) {
+.n-tag{
+  pointer-events: all;
+}
+.n-button{
+  pointer-events: all;
+}
+@media screen and (max-width: 600px) {
   .context {
     height: 100%;
     padding-top: 50px;

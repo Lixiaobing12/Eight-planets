@@ -10,7 +10,7 @@
           <n-grid cols="3" :x-gap="36">
             <n-grid-item>
               <img
-                style="cursor: pointer"
+                style="cursor: pointer;pointer-events: all;"
                 @click="toURL('https://t.me/Snail_SuperFarm')"
                 src="@/assets/web/telegram.png"
                 alt=""
@@ -18,7 +18,7 @@
               /> </n-grid-item
             ><n-grid-item>
               <img
-                style="cursor: pointer"
+                style="cursor: pointer;pointer-events: all;"
                 @click="toURL('https://twitter.com/Snail_SuperFarm')"
                 src="@/assets/web/twitter.png"
                 alt=""
@@ -26,7 +26,7 @@
               /> </n-grid-item
             ><n-grid-item>
               <img
-                style="cursor: pointer"
+                style="cursor: pointer;pointer-events: all;"
                 src="@/assets/web/discord.png"
                 alt=""
                 width="35"

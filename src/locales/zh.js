@@ -12,6 +12,8 @@ export default {
     home: {
         ido: "捐献",
         swap: "兑换",
+        swapa: "兑换",
+        liquidity: "流动性",
         bind: "已绑定",
         return: "返回星球",
         superFarm: '超级矿池&Defi-Metaverse',

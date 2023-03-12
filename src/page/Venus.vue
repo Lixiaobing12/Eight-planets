@@ -144,7 +144,7 @@ const toLink = (path) => {
     font-size: 0.9em;
   }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .bg {
     padding: 50px 0 0;
     background-image: url("@/assets/web/venus-bg.png");

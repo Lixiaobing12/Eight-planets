@@ -56,7 +56,7 @@ body {
     display: block;
   }
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 600px) {
     .h5-view {
       display: block;
     }

@@ -63,7 +63,7 @@
             </div>
           </n-grid-item>
           <n-grid-item>
-            <div style="max-width: 400px; padding: 0 20px">
+            <div style="max-width: 600px; padding: 0 20px">
               <div class="title">
                 <img
                   src="@/assets/web/home-transparent-lobo.png"

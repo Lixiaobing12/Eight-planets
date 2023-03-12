@@ -1,6 +1,6 @@
 <template>
   <div class="context">
-    <div style="max-width: 400px; margin: 20px auto; padding: 20px">
+    <div style="max-width: 600px; margin: 20px auto; padding: 20px">
       <div class="title">
         <img src="@/assets/web/home-transparent-lobo.png" alt="" />
         <img src="@/assets/web/invite-r.png" alt="" class="img2" />
@@ -233,7 +233,7 @@ const copy = () => {
     font-size: 0.9em;
   }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .context {
     padding-top: 30px;
   }

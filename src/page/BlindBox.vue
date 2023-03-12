@@ -5,7 +5,7 @@
         <img
           src="@/assets/web/blind.png"
           alt=""
-          style="width: 80%; max-width: 400px;"
+          style="width: 80%; max-width: 600px;"
         />
       </n-grid-item>
       <n-grid-item span="0 m:1"></n-grid-item>

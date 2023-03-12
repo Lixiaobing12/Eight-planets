@@ -11,6 +11,8 @@ export default {
     },
     home: {
         ido: "Ido",
+        swapa: "Swap",
+        liquidity: "Liquidity",
         swap: "SnailSwap",
         bind: "Bound",
         return: "Return",

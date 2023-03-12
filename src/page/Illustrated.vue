@@ -101,7 +101,7 @@ const getImg = (name) => {
   text-align: center;
   margin: 0 auto;
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .item-view {
     width: 100%;
   }
