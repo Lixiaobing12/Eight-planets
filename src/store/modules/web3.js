@@ -1,8 +1,7 @@
 import { Web3Provider } from '@/utils/web3'
 import BigNumber from 'bignumber.js';
-import { STC, MINER, snailIdo } from '@/utils/Coins'
 import i18n from '@/utils/i18n/setUpI18n.js';
-import { snailInv } from '../../utils/Coins';
+import { snailInv,snailIdo } from '../../utils/Coins';
 
 
 
@@ -37,8 +36,7 @@ const actions = {
         const web3 = context.state.web3;
         if (defaultAccount) {
             const { purchase } = new web3.eth.Contract(snailIdo.abi, snailIdo.address).methods;
-
-            return purchase(amount.toFixed(0)).send({ from: defaultAccount, value: amount.toFixed(0) })
+            return purchase().send({ from: defaultAccount, value: amount.toFixed(0) })
         } else {
             window.$message.warning(i18n.global.t('home.placeConnect'))
             return Promise.reject()
@@ -56,8 +54,9 @@ const actions = {
     async invite(context, parent) {
         const defaultAccount = context.state.defaultAccount;
         const web3 = context.state.web3;
-        const { invite } = new web3.eth.Contract(snailInv.abi, snailInv.address).methods;
-        return invite(defaultAccount, parent).send({ from: defaultAccount });
+        const { invite } = new web3.eth.Contract(snailIdo.abi, snailIdo.address).methods;
+        console.log(defaultAccount,parent)
+        return invite(parent).send({ from: defaultAccount });
     },
     async getInviterSunSize(context) {
         const defaultAccount = context.state.defaultAccount;

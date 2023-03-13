@@ -180,7 +180,7 @@ export const routes = [{
         name: 'home.whilePaper',
         isVisiable: true,
         chickEvent: 'open',
-        url: 'https://ji-nasorganization-1.gitbook.io/untitled/',
+        url: 'https://renyi.snailswap.vip/',
         icon: book
     }
 },

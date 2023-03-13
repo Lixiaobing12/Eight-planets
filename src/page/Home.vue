@@ -38,11 +38,7 @@
           </n-space>
         </n-grid-item>
         <n-grid-item span="4 m:2 l:2">
-          <img
-            src="@/assets/res/home-row1-right.png"
-            alt=""
-            class="media-img"
-          />
+          <img src="@/assets/res/home-row1-right.png" alt="" class="media-img" />
         </n-grid-item>
       </n-grid>
     </n-space>
@@ -119,7 +115,7 @@
       <n-button
         color="#161a2f"
         round
-        style="margin-top: 20px; padding: 28px 0; border: 1px solid #fff"
+        style="margin-top: 20px; padding: 28px 30px; border: 1px solid #fff"
         @click="toLink('/Ido')"
       >
         <div style="display: flex; align-items: center; margin: 0 10px">
@@ -138,13 +134,9 @@
     <n-space justify="center">
       <n-grid cols="4" item-responsive responsive="screen" :x-gap="24">
         <n-grid-item span="4 m:2 l:2">
-          <img
-            src="@/assets/res/home-row4-left.png"
-            alt=""
-            class="media-img-4"
-          />
+          <img src="@/assets/res/home-row4-left.png" alt="" class="media-img-4" />
         </n-grid-item>
-        <n-grid-item span="4 m:2 l:2">
+        <n-grid-item span="4 m:2 l:2" style="text-align: center">
           <div>
             <h1 style="font-size: 3em">{{ $t("home.firstPlanet") }}</h1>
             <h3>
@@ -153,7 +145,7 @@
               {{ $t("home.joinin") }}
             </h3>
           </div>
-          <n-space>
+          <n-space justify="center">
             <n-tag
               @click="toLink('/Venus')"
               round
@@ -162,9 +154,8 @@
                 color: #fff;
                 font-weight: 700;
                 border: 0;
-                padding:0 15px;
+                padding: 0 15px;
                 cursor: pointer;
-
               "
               >{{ $t("home.toStake") }}</n-tag
             >
@@ -191,12 +182,7 @@
     <n-space>
       <img :src="getLangImg" alt="" class="-centerimg" />
     </n-space>
-    <img
-      src="@/assets/res/home-row5-bottom.png"
-      alt=""
-      srcset=""
-      class="absolute-img"
-    />
+    <img src="@/assets/res/home-row5-bottom.png" alt="" srcset="" class="absolute-img" />
   </div>
   <div class="context6">
     <n-space justify="center" align="center">
@@ -213,18 +199,10 @@
     <n-space>
       <n-grid cols="2" responsive="screen">
         <n-grid-item>
-          <img
-            src="@/assets/res/home-row6-left.png"
-            alt=""
-            class="pleant-img-small"
-          />
+          <img src="@/assets/res/home-row6-left.png" alt="" class="pleant-img-small" />
         </n-grid-item>
         <n-grid-item>
-          <img
-            src="@/assets/res/home-row6-right.png"
-            alt=""
-            class="pleant-img-big"
-          />
+          <img src="@/assets/res/home-row6-right.png" alt="" class="pleant-img-big" />
         </n-grid-item>
       </n-grid>
     </n-space>
@@ -245,7 +223,7 @@
         {{ $t("home.blackholetip") }}
       </div>
     </n-space>
-    <Nfooter style="margin-top: 50px;" />
+    <Nfooter style="margin-top: 50px" />
   </div>
 </template>
 <script setup>
@@ -420,10 +398,10 @@ const toLink = (path) => {
     min-width: 300px;
   }
 }
-.n-tag{
+.n-tag {
   pointer-events: all;
 }
-.n-button{
+.n-button {
   pointer-events: all;
 }
 @media screen and (max-width: 600px) {

@@ -224,6 +224,7 @@ const max = () => {
 };
 const buy = async () => {
   if (!account.value || locading.value) return;
+  console.log("buy");
   let max = BigNumber(5e18).minus(amount.value);
   let input = BigNumber(inputAmount.value || 0).times(1e18);
   if (input.isGreaterThan(max)) {
@@ -238,6 +239,7 @@ const buy = async () => {
     locading.value = false;
     message.success(t("buyMachine.buySuccess"));
   } catch (err) {
+    console.log(err);
     locading.value = false;
   }
 };
@@ -276,14 +278,15 @@ let interval = null;
 const fetch = () => {
   nextTick(() => {
     document.querySelector(".copy").setAttribute("data-clipboard-text", inviteUrl.value);
-    if (parentUrl.value) {
-      bind();
-    }
   });
 
   store.dispatch("web3/getInviter").then((res) => {
     if (res !== "0x0000000000000000000000000000000000000000") {
       parent.value = res;
+    } else {
+      if (parentUrl.value) {
+        bind();
+      }
     }
   });
   store.dispatch("web3/getInviterSunSize").then((res) => {
