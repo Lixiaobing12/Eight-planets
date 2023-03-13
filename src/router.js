@@ -67,13 +67,34 @@ export const routes = [{
 },
 {
     path: '/Pool',
-    component: Pool,
-    name: 'Pool',
+    redirect: '/Pool-stake',
     meta: {
         name: 'home.PlanetPool',
         isVisiable: true,
         icon: planet
-    }
+    },
+    children: [
+        {
+            path: '/Pool-stake',
+            name: 'Pool',
+            component: Pool,
+            meta: {
+                name: 'home.PlanetPool',
+                isVisiable: true,
+            }
+        },
+        {
+            path: '/StarLeague',
+            name: 'StarLeague',
+            redirect: '/',
+            meta: {
+                name: 'home.StarLeague',
+                isVisiable: true,
+                chickEvent: 'notice',
+                // icon: star
+            }
+        },
+    ]
 },
 {
     path: '/Blackhole',
@@ -113,7 +134,17 @@ export const routes = [{
             name: 'home.Illustrated',
             isVisiable: true
         }
-    }
+    },
+    {
+        path: '/MyNft',
+        name: 'MyNft',
+        redirect: '/',
+        meta: {
+            name: 'home.Mynft',
+            isVisiable: true,
+            chickEvent: 'notice',
+        }
+    },
     ]
 },
 {
@@ -141,35 +172,13 @@ export const routes = [{
 {
     path: '/Ifo',
     name: 'Ifo',
-    redirect: '/IFO',
+    redirect: '/',
     meta: {
         name: 'home.ifo',
         isVisiable: true,
+        chickEvent: 'notice',
         icon: ifo
-    },
-    children: [
-        {
-            path: '/IFO',
-            name:'IFO',
-            redirect: '/',
-            meta: {
-                name: 'home.ifo',
-                chickEvent: 'notice',
-                isVisiable: true,
-            }
-        },
-        {
-            path: '/StarLeague',
-            name: 'StarLeague',
-            redirect: '/',
-            meta: {
-                name: 'home.StarLeague',
-                isVisiable: true,
-                chickEvent: 'notice',
-                // icon: star
-            }
-        },
-    ]
+    }
 },
 
 {

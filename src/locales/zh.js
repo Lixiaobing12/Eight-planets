@@ -10,6 +10,7 @@ export default {
         langChange: '语言切换',
     },
     home: {
+        Mynft:"我的NFt",
         earn:"产出",
         earned:'收益',
         harvest:"提取",

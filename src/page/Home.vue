@@ -4,8 +4,8 @@
       <n-grid cols="4" item-responsive responsive="screen">
         <n-grid-item span="4 m:2 l:2">
           <div>
-            <h1 style="font-size: 3em">SnailSwap</h1>
-            <h2>{{ $t("home.superFarm") }} <br />{{ $t("home.wonderful") }}</h2>
+            <h1 style="font-size: 4em">SnailSwap</h1>
+            <h1>{{ $t("home.superFarm") }} <br />{{ $t("home.wonderful") }}</h1>
           </div>
           <n-space>
             <n-tag
@@ -38,7 +38,9 @@
           </n-space>
         </n-grid-item>
         <n-grid-item span="4 m:2 l:2">
-          <img src="@/assets/res/home-row1-right.png" alt="" class="media-img" />
+          <n-space justify="center">
+            <img src="@/assets/res/home-row1-right.png" alt="" class="media-img" />
+          </n-space>
         </n-grid-item>
       </n-grid>
     </n-space>
@@ -100,18 +102,13 @@
   </div>
   <div class="context3">
     <n-space vertical justify="center" align="center" style="margin: 80px 0">
-      <img src="/logo.png" alt="" width="40" />
-      <h1>VEN IDO</h1>
-      <n-tag
-        style="
-          background: #4f5c60;
-          color: #fff;
-          padding: 0 20px;
-          border-radius: 15px;
-          --n-border: 0;
-        "
-        >10,000,000 <span style="color: #dfea52">TOKEN</span></n-tag
-      >
+      <img src="/logo.png" alt="" width="80" />
+      <h1 style="color: rgb(241, 251, 86)">VEN IDO</h1>
+      <h1>00 : 00 : 00</h1>
+      <div class="ngpress">
+        <div class="num">10,000,000</div>
+        <div style="color: #dfea52">TOKEN</div>
+      </div>
       <n-button
         color="#161a2f"
         round
@@ -315,7 +312,7 @@ const toLink = (path) => {
   overflow: auto;
   background-image: url("@/assets/res/home-bg1.png");
   background-size: cover;
-  padding-top: 100px;
+  padding-top: 120px;
   pointer-events: none;
 }
 .context2 {
@@ -338,6 +335,20 @@ const toLink = (path) => {
   justify-content: center;
   align-items: center;
   pointer-events: none;
+
+  .ngpress {
+    display: flex;
+    border: 1px solid rgb(60, 104, 111);
+    border-radius: 15px;
+    padding: 2px 16px 2px 2px;
+
+    .num {
+      background: rgb(112, 241, 246);
+      padding: 0 16px;
+      border-radius: 15px;
+      margin-right: 10px;
+    }
+  }
 }
 .context4 {
   min-height: 400px;
@@ -406,8 +417,8 @@ const toLink = (path) => {
 }
 @media screen and (max-width: 600px) {
   .context {
-    height: 100%;
     padding-top: 50px;
+    padding-bottom: 50px;
   }
   .media-img {
     width: 280px;

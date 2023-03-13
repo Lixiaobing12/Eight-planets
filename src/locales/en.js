@@ -10,6 +10,7 @@ export default {
         langChange: 'Language Switching',
     },
     home: {
+        Mynft:"My Nfts",
         earn:"EARN",
         earned:'EARNED',
         harvest:"HARVEST",
