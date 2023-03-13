@@ -2,12 +2,12 @@
   <div class="content">
     <div class="title">
       <div>
-        <n-icon :size="60">
-          <img src="/logo.png" style="width: 100%" alt="" />
+        <n-icon :size="30" @click="$emit('returns')">
+          <AngleDoubleLeft />
         </n-icon>
         <div class="title-span">
-          <div>{{ $t("home.Exchange") }}</div>
-          <div style="font-size: 12px">{{ $t("home.tokenTransaction") }}</div>
+          <div>{{ $t("home.importpool") }}</div>
+          <div style="font-size: 12px">{{ $t("home.importpooltips") }}</div>
         </div>
       </div>
       <n-popover
@@ -53,22 +53,9 @@
 
     <div class="context">
       <!-- from -->
-      <n-card
-        :style="{ order: transform ? '0' : '2' }"
-        style="
-          background: transparent;
-          color: #fff;
-          --n-border-color: #35696e;
-          border-width: 2px;
-          border-radius: 15px;
-        "
-      >
-        <div slot="header" style="display: flex; justify-content: space-between">
-          <div style="font-size: 1.2em; font-weight: 700">From</div>
-          <n-button round @click="onopen('from')">
-            <n-icon slot="icon" color="#fff" :size="18">
-              <ChevronDown12Filled />
-            </n-icon>
+      <n-button round @click="onopen('from')" style="width: 100%">
+        <div class="but-flex">
+          <div>
             <img
               :src="fromCoin.img"
               alt=""
@@ -76,37 +63,19 @@
               style="margin: 0 10px; width: 25px; height: 25px"
             />
             <span style="color: #fff; font-weight: 700">{{ fromCoin.name }}</span>
-          </n-button>
+          </div>
+          <n-icon color="#fff" :size="18">
+            <ChevronDown12Filled />
+          </n-icon>
         </div>
-
-        <n-input-number
-          placeholder=""
-          v-model:value="frominput"
-          :show-button="false"
-          style="text-align: left; background: transparent; --n-text-color: #fff"
-          :bordered="false"
-        />
-      </n-card>
-      <n-icon :size="25" style="margin: 20px 0; order: 1" @click="transform = !transform">
-        <ArrowCircleDown48Filled />
+      </n-button>
+      <n-icon :size="25" style="margin: 20px 0">
+        <AddSharp />
       </n-icon>
       <!-- to -->
-      <n-card
-        :style="{ order: transform ? '2' : '0' }"
-        style="
-          background: transparent;
-          color: #fff;
-          --n-border-color: #35696e;
-          border-width: 2px;
-          border-radius: 15px;
-        "
-      >
-        <div slot="header" style="display: flex; justify-content: space-between">
-          <div style="font-size: 1.2em; font-weight: 700">To</div>
-          <n-button round @click="onopen('to')">
-            <n-icon slot="icon" color="#fff" :size="18">
-              <ChevronDown12Filled />
-            </n-icon>
+      <n-button round @click="onopen('to')" style="width: 100%">
+        <div class="but-flex">
+          <div>
             <img
               :src="toCoin.img"
               alt=""
@@ -114,23 +83,18 @@
               style="margin: 0 10px; width: 25px; height: 25px"
             />
             <span style="color: #fff; font-weight: 700">{{ toCoin.name }}</span>
-          </n-button>
+          </div>
+          <n-icon color="#fff" :size="18">
+            <ChevronDown12Filled />
+          </n-icon>
         </div>
-
-        <n-input-number
-          placeholder=""
-          v-model:value="toinput"
-          :show-button="false"
-          style="text-align: left; background: transparent; --n-text-color: #fff"
-          :bordered="false"
-        />
-      </n-card>
+      </n-button>
     </div>
     <n-tag
       size="large"
       round
       :bordered="false"
-      @click="swap"
+      @click="$emit('addliquidity')"
       style="
         width: 70%;
         color: #fff;
@@ -140,7 +104,7 @@
         --n-height: 50px;
       "
     >
-      {{ $t("home.swapa") }}
+      {{ $t("home.addliquidity") }}
     </n-tag>
   </div>
   <n-modal v-model:show="showModal">
@@ -187,12 +151,12 @@
 import { Settings } from "@vicons/carbon";
 import { ArrowCircleDown48Filled, ChevronDown12Filled } from "@vicons/fluent";
 import coins from "@/assets/coins/coin.json";
-import { Reload } from "@vicons/ionicons5";
+import { Reload, AddSharp } from "@vicons/ionicons5";
 import { useStore } from "vuex";
 import { useMessage } from "naive-ui";
 import { useI18n } from "vue-i18n";
 import { computed } from "vue";
-
+import { AngleDoubleLeft } from "@vicons/fa";
 // 币种选择框
 const showModal = ref(false);
 const fromCoin = ref(coins.find((i) => i.isFromDefault));
@@ -275,6 +239,20 @@ const swap = () => {
       .n-input__input-el {
         color: #fff;
         font-size: 1.2em;
+      }
+    }
+    ::v-deep(.n-button__content) {
+      width: 100%;
+    }
+    .but-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+
+      > div {
+        display: flex;
+        align-items: center;
       }
     }
   }

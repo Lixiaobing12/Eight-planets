@@ -1,12 +1,29 @@
 <template>
   <div class="context">
-    <div class="but-group">
-      <div :class="{ isActive: active === 0 }" @click="active = 0">{{$t('home.swapa')}}</div>
+    <template v-if="isFoundComponent === 'normal'">
+      <div class="but-group">
+        <div :class="{ isActive: active === 0 }" @click="active = 0">
+          {{ $t("home.swapa") }}
+        </div>
         <div :class="{ isActive: active === 1 }" @click="active = 1">
-        {{$t('home.liquidity')}}
+          {{ $t("home.liquidity") }}
+        </div>
       </div>
-    </div>
-    <component :is="view" />
+      <component
+        :is="view"
+        @toFind="isFoundComponent = 'find'"
+        @toAdd="isFoundComponent = 'add'"
+      />
+    </template>
+    <findPair
+      v-else-if="isFoundComponent === 'find'"
+      @returns="isFoundComponent = 'normal'"
+      @addliquidity="isFoundComponent = 'add'"
+    />
+    <addPair
+      v-else-if="isFoundComponent === 'add'"
+      @returns="isFoundComponent = 'normal'"
+    />
     <Nfooter />
   </div>
 </template>
@@ -18,6 +35,8 @@ import { useStore } from "vuex";
 import Swap from "./childrens/SwapCard.vue";
 import Liquidity from "./childrens/SwapLiquidity.vue";
 import Nfooter from "@/layout/footer.vue";
+import findPair from "./childrens/findPair.vue";
+import addPair from "./childrens/addPair.vue";
 
 const message = useMessage();
 const { t } = useI18n();
@@ -27,6 +46,7 @@ const active = ref(0);
 const view = computed(() => {
   return active.value === 0 ? Swap : Liquidity;
 });
+const isFoundComponent = ref("normal");
 // 连接钱包
 const connect = async () => {
   if (!account.value) {
@@ -49,6 +69,9 @@ const confirm = () => {
   text-align: center;
   position: relative;
   padding-top: 100px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 
   .img-top {
     margin-top: 40px;

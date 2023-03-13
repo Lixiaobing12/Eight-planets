@@ -19,6 +19,8 @@ import NftIllustrated from '@/page/NftIllustrated.vue';
 import Invite from '@/page/Invite.vue';
 import Venus from '@/page/Venus.vue';
 import Ido from '@/page/Ido.vue';
+import findPair from '@/page/childrens/findPair.vue';
+
 
 const menu = '/dynamic/menu-swap.png'
 const blackhold = '/dynamic/menu-blackhold.png';
@@ -196,6 +198,14 @@ export const routes = [{
     path: '/Venus',
     component: Venus,
     name: 'Venus',
+    meta: {
+        isVisiable: false,
+    }
+},
+{
+    path: '/Find',
+    component: findPair,
+    name: 'findPair',
     meta: {
         isVisiable: false,
     }
