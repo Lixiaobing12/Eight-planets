@@ -169,13 +169,13 @@ const changeLang = () => {
 const onMenuClick = (key, item) => {
   if (item.meta && item.meta.chickEvent === "notice") {
     message.info(t("home.Coming soon"));
-    return ;
+    return;
   } else if (item.meta && item.chickEvent === "open") {
     window.open(item.meta.url);
     return;
   }
   router.push({ path: item.path });
-
+  active.value = false;
   // if ([3, 5, 6, 7, 8].includes(i)) {
   //   message.info(t("home.Coming soon"));
   //   return;

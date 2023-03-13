@@ -1,6 +1,6 @@
 <template>
   <div class="bg">
-    <div class="context bg">
+    <div class="context">
       <div>
         <Illustrated />
       </div>
@@ -56,7 +56,7 @@ import Nfooter from "@/layout/footer.vue";
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .bg {
     padding: 80px 0 0;
     background-image: url("@/assets/web/venus-bg.png");

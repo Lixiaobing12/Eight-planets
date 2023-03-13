@@ -92,7 +92,7 @@ const getImg = (name) => {
   let lang = locale.value === "en" ? "en" : "zh";
   let path = `/dynamic/${name}-${lang}.png`;
 
-  return new URL(path, import.meta.url).href;
+  return path;
 };
 </script>
 <style lang="less" scoped>
