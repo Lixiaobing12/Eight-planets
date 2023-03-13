@@ -10,6 +10,12 @@ export default {
         langChange: '语言切换',
     },
     home: {
+        earn:"产出",
+        earned:'收益',
+        harvest:"提取",
+        stake:'质押',
+        unstake:'赎回',
+        totalLiquidity:"流动性总量",
         addSuccess:"添加成功~",
         lprareward:"流动性提供收益的 APR",
         choosepair:"选择有效对",

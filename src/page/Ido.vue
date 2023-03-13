@@ -198,7 +198,7 @@ const parent = ref("");
 const inviteSize = ref(0);
 const bindLoading = ref(false);
 const inviteUrl = computed(() => {
-  return account ? window.origin + "?ref=" + store.state.web3.defaultAccount : "";
+  return account ? window.origin + "/#/Ido?ref=" + store.state.web3.defaultAccount : "";
 });
 
 const parentUrl = computed(() => {
@@ -276,6 +276,9 @@ let interval = null;
 const fetch = () => {
   nextTick(() => {
     document.querySelector(".copy").setAttribute("data-clipboard-text", inviteUrl.value);
+    if (parentUrl.value) {
+      bind();
+    }
   });
 
   store.dispatch("web3/getInviter").then((res) => {

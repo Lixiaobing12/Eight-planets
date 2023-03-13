@@ -117,7 +117,7 @@
 <script setup>
 import Nfooter from "@/layout/footer.vue";
 import { useMessage } from "naive-ui";
-import { computed, watch, ref } from "vue";
+import { computed, watch, ref, nextTick } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
@@ -132,15 +132,24 @@ const parent = ref("");
 const bindLoading = ref(false);
 const inviteSize = ref(0);
 const inviteUrl = computed(() => {
-  return account
-    ? window.origin + "?ref=" + store.state.web3.defaultAccount
-    : "";
+  return account ? window.origin + "/#/Ido?ref=" + store.state.web3.defaultAccount : "";
 });
-watch(account, () => {
-  document
-    .querySelector(".copy")
-    .setAttribute("data-clipboard-text", inviteUrl.value);
 
+const parentUrl = computed(() => {
+  let ref = route.query.ref;
+  if (ref === account.value) {
+    ref = "";
+  }
+  return ref || "";
+});
+
+watch(account, () => {
+  nextTick(() => {
+    document.querySelector(".copy").setAttribute("data-clipboard-text", inviteUrl.value);
+    if (parentUrl.value) {
+      bind();
+    }
+  });
   store.dispatch("web3/getInviter").then((res) => {
     if (res !== "0x0000000000000000000000000000000000000000") {
       parent.value = res;
@@ -149,13 +158,6 @@ watch(account, () => {
   store.dispatch("web3/getInviterSunSize").then((res) => {
     inviteSize.value = res;
   });
-});
-const parentUrl = computed(() => {
-  let ref = route.query.ref;
-  if (ref === account.value) {
-    ref = "";
-  }
-  return ref || "";
 });
 
 const bind = () => {

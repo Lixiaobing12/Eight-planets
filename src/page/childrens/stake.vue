@@ -9,19 +9,19 @@
       <div>{{ arp }}</div>
     </div>
     <div class="title">
-      <div>EARN</div>
+      <div>{{ $t("home.earn") }}</div>
       <div>SNAIL</div>
     </div>
     <div class="title">
       <div>
-        <div>SNAIL EARNED</div>
+        <div>SNAIL {{ $t("home.earned") }}</div>
         <div>0</div>
       </div>
       <div>
         <n-button
           style="width: 100px; border-radius: 15px; margin: 10px 0"
           color="#bfbfbf"
-          >HARVEST</n-button
+          >{{ $t("home.harvest") }}</n-button
         >
       </div>
     </div>
@@ -29,18 +29,18 @@
       <n-button
         style="width: 200px; border-radius: 15px; margin: 10px 0"
         color="#68e1eb"
-        >STAKE</n-button
+        >{{ $t("home.stake") }}</n-button
       >
     </div>
     <div>
       <n-button
         style="width: 200px; border-radius: 15px; margin: 10px 0"
         color="#68e1eb"
-        >UNSTAKE</n-button
+        >{{ $t("home.unstake") }}</n-button
       >
     </div>
     <div class="title">
-      <div>Total Liquidity:</div>
+      <div>{{ $t("home.totalLiquidity") }}:</div>
       <div>$0</div>
     </div>
   </div>

@@ -31,12 +31,12 @@ export default defineComponent({
     const path = computed(() => route.path);
     const { t, locale } = useI18n();
 
-    onBeforeMount(() => {
-      console.log(route);
+    onMounted(() => {
       const ref = route.query.ref;
+      console.log(route, ref);
       if (ref) {
         nextTick(() => {
-           router.push({ path: "/Ido", query: { ref } });
+          router.push({ path: "/Ido", query: { ref } });
         });
       }
     });

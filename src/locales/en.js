@@ -10,6 +10,12 @@ export default {
         langChange: 'Language Switching',
     },
     home: {
+        earn:"EARN",
+        earned:'EARNED',
+        harvest:"HARVEST",
+        stake:'STAKE',
+        unstake:'UNSTAKE',
+        totalLiquidity:"Total Liquidity",
         addSuccess:"Add success!",
         lprareward:"LP reward APR",
         choosepair:"CHOOSE A VALID PAIR",
