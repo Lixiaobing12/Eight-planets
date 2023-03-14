@@ -3,11 +3,14 @@
     <n-space justify="center">
       <n-grid cols="4" item-responsive responsive="screen">
         <n-grid-item span="4 m:2 l:2">
-          <div>
-            <h1 style="font-size: 4em">SnailSwap</h1>
-            <h1>{{ $t("home.superFarm") }} <br />{{ $t("home.wonderful") }}</h1>
-          </div>
-          <n-space>
+          <n-space justify="center" style="padding: 0 16px">
+            <div>
+              <h1 style="font-size: 4em">SnailSwap</h1>
+              <h1>{{ $t("home.superFarm") }} <br />{{ $t("home.wonderful") }}</h1>
+            </div>
+          </n-space>
+
+          <n-space justify="center">
             <n-tag
               @click="toLink('/Pool')"
               style="
@@ -103,8 +106,7 @@
   <div class="context3">
     <n-space vertical justify="center" align="center" style="margin: 80px 0">
       <img src="/logo.png" alt="" width="80" />
-      <h1 style="color: rgb(241, 251, 86)">VEN IDO</h1>
-      <h1>00 : 00 : 00</h1>
+      <h1 style="color: rgb(241, 251, 86); margin: 0">VEN IDO</h1>
       <div class="ngpress">
         <div class="num">10,000,000</div>
         <div style="color: #dfea52">TOKEN</div>
@@ -115,12 +117,18 @@
         style="margin-top: 20px; padding: 28px 30px; border: 1px solid #fff"
         @click="toLink('/Ido')"
       >
-        <div style="display: flex; align-items: center; margin: 0 10px">
+        <span style="font-size: 1.5em; margin-right: 10px">
+          {{ $t("home.PEESALE") }}
+        </span>
+        <span>
+          <n-icon color="#858793" size="25"><CaretRight24Filled /></n-icon>
+        </span>
+        <!-- <div style="display: flex; align-items: center; margin: 0 10px">
           <div style="font-size: 1.5em; margin-top: 3px; margin-right: 10px">
             {{ $t("home.PEESALE") }}
           </div>
           <n-icon color="#858793" size="25"><CaretRight24Filled /></n-icon>
-        </div>
+        </div> -->
       </n-button>
       <div style="text-align: center; margin-top: 20px">
         {{ $t("home.eachAdd") }}
@@ -173,7 +181,7 @@
           padding: 20px 10px;
           font-size: 1.5em;
         "
-        >NFT DEFI TO EARN</n-tag
+        >{{ $t("home.nftdefitoearn") }}</n-tag
       >
     </n-space>
     <n-space>
@@ -184,7 +192,7 @@
   <div class="context6">
     <n-space justify="center" align="center">
       <div class="-bgimg">
-        <h1>BLACK HOLE</h1>
+        <h1>{{ $t("home.blackholes") }}</h1>
         <h3>
           <span style="color: #eca63d">{{ $t("home.general") }}</span>
           {{ $t("home.blackholea") }}
@@ -344,7 +352,7 @@ const toLink = (path) => {
 
     .num {
       background: rgb(112, 241, 246);
-      padding: 0 16px;
+      padding: 0 40px;
       border-radius: 15px;
       margin-right: 10px;
     }

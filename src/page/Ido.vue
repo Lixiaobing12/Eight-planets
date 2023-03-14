@@ -149,7 +149,7 @@
                             font-style: italic;
                             font-weight: 700;
                           "
-                          >SNAIL</span
+                          >VEN</span
                         >
                       </div>
                     </n-gi>

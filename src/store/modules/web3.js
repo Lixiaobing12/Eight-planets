@@ -32,6 +32,7 @@ const actions = {
         return balanceOf(context.state.defaultAccount).call();
     },
     async buy(context, amount) {
+        console.log(amount.toFixed(0))
         const defaultAccount = context.state.defaultAccount;
         const web3 = context.state.web3;
         if (defaultAccount) {

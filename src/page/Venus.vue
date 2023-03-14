@@ -1,21 +1,16 @@
 <template>
   <div class="bg">
     <div class="context">
-      <n-space justify="space-around" align="center">
+      <n-space justify="space-evenly" align="center">
         <div
           class="pc-view"
           @click="toLink('/Pool')"
-          style="
-            cursor: pointer;
-            text-align: center;
-            display: flex;
-            align-items: center;
-          "
+          style="cursor: pointer; text-align: center; display: flex; align-items: center"
         >
           <n-icon>
             <ArrowLeft />
           </n-icon>
-          {{$t('home.return')}}
+          {{ $t("home.return") }}
         </div>
         <div class="title">
           <img src="@/assets/web/planet/planet1.png" alt="" />
@@ -47,35 +42,19 @@
       <n-space justify="center" align="center">
         <n-grid cols="1 m:3 " responsive="screen" :x-gap="48" :y-gap="48">
           <n-grid-item>
-            <Stake name="SNAIL" arp="256%" url="../../assets/web/sanil.png" />
+            <Stake name="VEN" arp="256%" url="../../assets/web/sanil.png" />
           </n-grid-item>
           <n-grid-item>
-            <Stake
-              name="SNAIL/WETH"
-              arp="150%"
-              url="../../assets/web/sanil-weth.png"
-            />
+            <Stake name="VEN/WETH" arp="150%" url="../../assets/web/sanil-weth.png" />
           </n-grid-item>
           <n-grid-item>
-            <Stake
-              name="SNAIL/USDC"
-              arp="300%"
-              url="../../assets/web/sanil-usdc.png"
-            />
+            <Stake name="VEN/USDC" arp="300%" url="../../assets/web/sanil-usdc.png" />
           </n-grid-item>
           <n-grid-item>
-            <Stake
-              name="USDT/USDC"
-              arp="256%"
-              url="../../assets/web/usdt-usdc.png"
-            />
+            <Stake name="USDT/USDC" arp="256%" url="../../assets/web/usdt-usdc.png" />
           </n-grid-item>
           <n-grid-item>
-            <Stake
-              name="WETH/USDC"
-              arp="256%"
-              url="../../assets/web/weth-usdc.png"
-            />
+            <Stake name="WETH/USDC" arp="256%" url="../../assets/web/weth-usdc.png" />
           </n-grid-item>
         </n-grid>
       </n-space>

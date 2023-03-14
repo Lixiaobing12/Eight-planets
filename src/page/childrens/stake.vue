@@ -10,11 +10,11 @@
     </div>
     <div class="title">
       <div>{{ $t("home.earn") }}</div>
-      <div>SNAIL</div>
+      <div>VEN</div>
     </div>
     <div class="title">
       <div>
-        <div>SNAIL {{ $t("home.earned") }}</div>
+        <div>VEN {{ $t("home.earned") }}</div>
         <div>0</div>
       </div>
       <div>
