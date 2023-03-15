@@ -182,14 +182,14 @@ export const routes = [{
 },
 
 {
-    path: '/whilePaper',
+    path: '/whitePaper',
     name: 'whilePaper',
     redirect: '/',
     meta: {
         name: 'home.whilePaper',
         isVisiable: true,
         chickEvent: 'open',
-        url: 'https://renyi.snailswap.vip/',
+        url: 'https://jal.snailswap.vip/',
         icon: book
     }
 },

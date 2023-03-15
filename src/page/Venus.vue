@@ -93,7 +93,7 @@ const toLink = (path) => {
 
   .title {
     width: 90%;
-    margin: 30px auto 10px;
+    margin: 30px 10px 30px -100px;
     display: flex;
     justify-content: center;
 
@@ -107,6 +107,12 @@ const toLink = (path) => {
     }
     .detail {
       font-size: 0.7em;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .title {
+      margin: 30px auto;
     }
   }
   .div-relative {

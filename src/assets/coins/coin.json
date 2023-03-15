@@ -6,7 +6,7 @@
     {
         "address": "0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3",
         "name": "VEN",
-        "img": "/coin/ven.png"
+        "img": "/coin/VEN.png"
     },
     {
         "address": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
@@ -17,7 +17,7 @@
     {
         "address": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
         "name": "WETH",
-        "img": "/coin/weth.png"
+        "img": "/coin/eth.png"
     },
     {
         "address": "0x947950BcC74888a40Ffa2593C5798F11Fc9124C4",
