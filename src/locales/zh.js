@@ -12,7 +12,7 @@ export default {
     home: {
         blackholes:"黑洞",
         nftdefitoearn:"玩赚NFT金融",
-        Mynft:"我的NFt",
+        Mynft:"我的NFT",
         earn:"产出",
         earned:'收益',
         harvest:"提取",
@@ -82,7 +82,7 @@ export default {
         UndergroundCity: "地下城",
         ifo: "IFO",
         StarLeague: "星级联盟",
-        whilePaper: "白皮书",
+        whilePaper: "文档",
         Invite: '邀请链接',
         Donate: "捐献",
         tip1: "SnailSwap是一个具有可持续性激励机制的分布式自动化交易平台，它是使用ERC20智能合约作为其基础技术所创建的，并调整了DeFi服务以配合用户和投资者的所需，提供交易、流动性挖矿、NFT市场等功能，支持并保障用户交易不同区块链生态系统提供的多元化金融产品。",

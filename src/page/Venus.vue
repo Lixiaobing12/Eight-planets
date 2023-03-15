@@ -106,7 +106,8 @@ const toLink = (path) => {
       height: 120px;
     }
     .detail {
-      font-size: 0.7em;
+      font-size: 1em;
+      word-break: break-all;
     }
   }
 

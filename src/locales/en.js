@@ -82,7 +82,7 @@ export default {
         UndergroundCity: "Dungeon",
         ifo: "IFO",
         StarLeague: "Star League",
-        whilePaper: "white Paper",
+        whilePaper: "Docs",
         Invite: 'Invitation',
         Donate: "Donate",
         tip1: "SnailSwap is a distributed automated trading platform with sustainable incentives. It was created using ERC20 smart contracts as its underlying technology, and has adapted DeFi services to meet the needs of users and investors, providing trading, liquidity mining, NFT markets and other functions. Support and guarantee users to trade diversified financial products provided by different blockchain ecosystems.",

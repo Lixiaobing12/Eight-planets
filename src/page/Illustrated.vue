@@ -3,11 +3,7 @@
     <n-grid cols="1 m:4 " responsive="screen">
       <n-grid-item span="0 m:1"> </n-grid-item>
       <n-grid-item>
-        <img
-          src="@/assets/web/ill-bg.png"
-          alt=""
-          style="width: 100%; max-width: 300px"
-        />
+        <img src="@/assets/web/ill-bg.png" alt="" style="width: 100%; max-width: 300px" />
       </n-grid-item>
       <n-grid-item>
         <n-space align="center" justify="center" style="height: 100%">
@@ -34,49 +30,49 @@
           <n-grid-item>
             <div style="position: relative; margin: 20px 0">
               <img :src="getImg('snail1')" alt="" style="width: 90%" />
-              <div>【{{ $t("home.Snail_tip2") }}】</div>
+              <div class="tip">【{{ $t("home.Snail_tip2") }}】</div>
             </div>
           </n-grid-item>
           <n-grid-item>
             <div style="position: relative; margin: 20px 0">
               <img :src="getImg('snail2')" alt="" style="width: 90%" />
-              <div>【{{ $t("home.Snail_tip3") }}】</div>
+              <div class="tip">【{{ $t("home.Snail_tip3") }}】</div>
             </div>
           </n-grid-item>
           <n-grid-item>
             <div style="position: relative; margin: 20px 0">
               <img :src="getImg('snail3')" alt="" style="width: 90%" />
-              <div>【{{ $t("home.Snail_tip4") }}】</div>
+              <div class="tip">【{{ $t("home.Snail_tip4") }}】</div>
             </div>
           </n-grid-item>
           <n-grid-item>
             <div style="position: relative; margin: 20px 0">
               <img :src="getImg('snail4')" alt="" style="width: 90%" />
-              <div>【{{ $t("home.Snail_tip5") }}】</div>
+              <div class="tip">【{{ $t("home.Snail_tip5") }}】</div>
             </div>
           </n-grid-item>
           <n-grid-item>
             <div style="position: relative; margin: 20px 0">
               <img :src="getImg('snail5')" alt="" style="width: 90%" />
-              <div>【{{ $t("home.Snail_tip6") }}】</div>
+              <div class="tip">【{{ $t("home.Snail_tip6") }}】</div>
             </div>
           </n-grid-item>
           <n-grid-item>
             <div style="position: relative; margin: 20px 0">
               <img :src="getImg('snail6')" alt="" style="width: 90%" />
-              <div>【{{ $t("home.Snail_tip7") }}】</div>
+              <div class="tip">【{{ $t("home.Snail_tip7") }}】</div>
             </div>
           </n-grid-item>
           <n-grid-item>
             <div style="position: relative; margin: 20px 0">
               <img :src="getImg('snail7')" alt="" style="width: 90%" />
-              <div>【{{ $t("home.Snail_tip8") }}】</div>
+              <div class="tip">【{{ $t("home.Snail_tip8") }}】</div>
             </div>
           </n-grid-item>
           <n-grid-item>
             <div style="position: relative; margin: 20px 0">
               <img :src="getImg('snail8')" alt="" style="width: 90%" />
-              <div>【{{ $t("home.Snail_tip9") }}】</div>
+              <div class="tip">【{{ $t("home.Snail_tip9") }}】</div>
             </div>
           </n-grid-item>
         </n-grid>
@@ -100,10 +96,19 @@ const getImg = (name) => {
   width: 70%;
   text-align: center;
   margin: 0 auto;
+
+  .tip {
+    width: 85%;
+    margin: 0 auto;
+  }
 }
 @media screen and (max-width: 600px) {
   .item-view {
     width: 100%;
+
+    .tip {
+      width: 90%;
+    }
   }
 }
 .cover {
