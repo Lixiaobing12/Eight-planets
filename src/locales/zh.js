@@ -10,6 +10,7 @@ export default {
         langChange: '语言切换',
     },
     home: {
+        utcStart:'3月30日10:00 (UTC)',
         blackholes:"黑洞",
         nftdefitoearn:"玩赚NFT金融",
         Mynft:"我的NFT",

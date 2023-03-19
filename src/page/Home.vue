@@ -107,6 +107,8 @@
     <n-space vertical justify="center" align="center" style="margin: 80px 0">
       <img src="/logo.png" alt="" width="80" />
       <h1 style="color: rgb(241, 251, 86); margin: 0">VEN IDO</h1>
+
+      <h1>{{ $t("home.utcStart") }}</h1>
       <div class="ngpress">
         <div class="num">10,000,000</div>
         <div style="color: #dfea52">TOKEN</div>

@@ -11,6 +11,7 @@ export default {
     },
     home: {
         blackholes:"BLACK HOLE",
+        utcStart:'March 30 at 10:00 (UTC)',
         nftdefitoearn:"NFT DEFI TO EARN",
         Mynft:"My Nfts",
         earn:"EARN",
