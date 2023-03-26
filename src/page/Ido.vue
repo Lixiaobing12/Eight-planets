@@ -8,13 +8,13 @@
             <div class="bg">
               <div style="display: flex; align-items: center; justify-content: center">
                 <img src="@/assets/web/home-transparent-lobo.png" width="40" alt="" />
-                <div style="margin-left: 20px; font-size: 1.5em">KOL-ROUND1</div>
+                <div style="margin-left: 20px; font-size: 1.5em">VEN-ROUND1</div>
               </div>
               <div style="font-size: 2em; marign-top: 2em; font-weight: 700">
                 {{ $t("home.Donate") }}
               </div>
 
-              <!-- <n-input
+              <n-input
                 v-model:value="inputAmount"
                 type="text"
                 style="width: 60%; color: #fff"
@@ -23,16 +23,6 @@
                 <template #suffix>
                   <span @click="max">MAX</span>
                 </template>
-              </n-input> -->
-              <n-input
-                :value="inputAmount"
-                type="text"
-                style="width: 60%; color: #fff"
-                placeholder=""
-              >
-                <!-- <template #suffix>
-                  <span @click="max">MAX</span>
-                </template> -->
               </n-input>
 
               <div style="width: 80%; text-align: center; margin: 20px auto">
@@ -52,8 +42,7 @@
               <div style="width: 100%">
                 <div class="data-img ethimg">
                   <span>{{ $t("home.amount") }}：</span>
-                  <span>0.57 ETH</span>
-                  <!-- <span>0.05 - 5 ETH</span> -->
+                  <span>0.05 - 5 ETH</span>
                 </div>
                 <div class="data-img">
                   <span>{{ $t("home.Quantity") }}：</span>
@@ -201,7 +190,7 @@ const router = useRouter();
 const store = useStore();
 const message = useMessage();
 const route = useRoute();
-const inputAmount = ref("0.57");
+const inputAmount = ref("");
 const account = computed(() => {
   return store.state.web3.defaultAccount;
 });
