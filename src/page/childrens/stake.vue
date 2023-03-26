@@ -57,14 +57,14 @@ const { name, arp } = toRefs(props);
 const getURL = () => {
   let url = "";
   switch (name.value) {
-    case "SNAIL":
-      url = "/snail.png";
+    case "VEN":
+      url = "/coin/VEN.png";
       break;
-    case "SNAIL/WETH":
+    case "VEN/WETH":
       url = "/snail-weth.png";
       break;
-    case "SNAIL/USDC":
-      url = "/snail-usdc.png";
+    case "ARB/USDC":
+      url = "/arb-usdc.png";
       break;
     case "USDT/USDC":
       url = "/usdt-usdc.png";
@@ -73,6 +73,7 @@ const getURL = () => {
       url = "/weth-usdc.png";
       break;
   }
+  console.log("url", url);
   return url;
 };
 </script>

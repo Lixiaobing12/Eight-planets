@@ -28,7 +28,11 @@
               <div style="width: 80%; text-align: center; margin: 20px auto">
                 <n-grid x-gap="12" :cols="2">
                   <n-gi>
-                    <div class="but1" @click="buy">
+                    <div
+                      class="but1"
+                      :class="{ withdraw: !isOverTime }"
+                      @click="isOverTime && buy()"
+                    >
                       <n-spin :size="16" v-if="locading" stroke="#fff" />
                       <span v-else>{{ $t("home.pay") }}</span>
                     </div>
@@ -198,6 +202,7 @@ const locading = ref(false);
 const parent = ref("");
 const inviteSize = ref(0);
 const bindLoading = ref(false);
+const isOverTime = ref(Date.now() > 1680170400000);
 const inviteUrl = computed(() => {
   return account ? window.origin + "/#/Ido?ref=" + store.state.web3.defaultAccount : "";
 });
@@ -224,6 +229,7 @@ const max = () => {
   inputAmount.value = BigNumber(5e18).minus(amount.value).div(1e18).toFixed(2);
 };
 const buy = async () => {
+  if (!isOverTime) return;
   if (!account.value || locading.value) return;
   console.log("buy");
   let max = BigNumber(5e18).minus(amount.value);
@@ -308,6 +314,16 @@ watch(account, fetch);
 const toLink = (path) => {
   router.push(path);
 };
+
+let timer;
+onMounted(() => {
+  timer = setInterval(() => {
+    isOverTime.value = Date.now() > 1680170400000;
+  }, 1000);
+});
+onUnmounted(() => {
+  timer && clearInterval(timer);
+});
 </script>
 <style lang="less" scoped>
 .context {
@@ -333,11 +349,14 @@ const toLink = (path) => {
     align-items: center;
     margin: 0 auto;
   }
+
   .n-input {
     background: transparent;
+
     ::v-deep(.n-input__input-el) {
       color: #fff;
     }
+
     ::v-deep(.n-input__border) {
       border: 2px solid #4381dc !important;
       border-radius: 10px;
@@ -357,6 +376,7 @@ const toLink = (path) => {
     padding: 7px 16px;
     text-align: center;
   }
+
   .withdraw {
     filter: opacity(0.5);
   }
@@ -379,6 +399,7 @@ const toLink = (path) => {
       margin-left: 2em;
     }
   }
+
   .ethimg {
   }
 
